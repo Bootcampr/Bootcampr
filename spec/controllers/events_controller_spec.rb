@@ -20,6 +20,24 @@ describe EventsController do
       expect(response).to render_template :index
     end
 
+  end
+
+  context 'GET #new' do
+    before(:each) do
+      get :new
+    end
+
+    it 'responds with a status code of 200' do
+      expect(response.status).to eq 200
+    end
+
+    it 'assigns a new event to @event' do
+      expect(assigns[:event]).to be_a_new(Event)
+    end
+
+    it 'renders the :new template' do
+      expect(response).to render_template :new
+    end
 
   end
 
