@@ -5,7 +5,9 @@ class Event < ApplicationRecord
     attr_accessor :due_at
     date_time_attribute :due_at
 
-    validates_presence_of :title, :date, :time, :location, :summary
+    validates_presence_of :title, :date, :time, :location, :summary, :owner_id
+
+    belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
     def format_time
       self.time.strftime('%I:%M %p')
