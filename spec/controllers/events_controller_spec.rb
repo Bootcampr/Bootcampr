@@ -58,34 +58,52 @@ describe EventsController do
       end
 
       it 'redirects to the created event'do
-        post :create,  { :event => valid_attributes }
-        expect(response).to redirect_to "/events/#{Event.last.id}"
-      end
-
+      post :create,  { :event => valid_attributes }
+      expect(response).to redirect_to "/events/#{Event.last.id}"
     end
 
-    context 'when invalid params are passed' do
-      before(:each) do
-        post :create, { event: { title: 'this' } }
-      end
-
-      it 'responds with a status code of 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'does not create a new event in the database' do
-        expect { post :create, { event: { title: 'this' } } }.to_not change(Event, :count)
-      end
-
-      it 'assigns the unsaved event as @event' do
-        expect(assigns[:event]).to be_a(Event)
-      end
-
-      it 'renders the :new template' do
-        expect(response).to render_template :new
-      end
-
-    end
   end
+
+  context 'when invalid params are passed' do
+    before(:each) do
+      post :create, { event: { title: 'this' } }
+    end
+
+    it 'responds with a status code of 422' do
+      expect(response).to have_http_status(422)
+    end
+
+    it 'does not create a new event in the database' do
+      expect { post :create, { event: { title: 'this' } } }.to_not change(Event, :count)
+    end
+
+    it 'assigns the unsaved event as @event' do
+      expect(assigns[:event]).to be_a(Event)
+    end
+
+    it 'renders the :new template' do
+      expect(response).to render_template :new
+    end
+
+  end
+end
+
+describe 'GET #show' do
+  it "responds with status code 200" do
+    get :show, { id: event.id }
+    expect(response).to have_http_status 200
+  end
+
+  it "assigns the correct event as @event" do
+    get :show, { id: event.id }
+    expect(assigns(:event)).to eq(event)
+  end
+  
+  it "renders the :show template" do
+    get :show, { id: event.id }
+    expect(response).to render_template(:show)
+  end
+
+end
 
 end
