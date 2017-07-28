@@ -53,40 +53,36 @@ describe EventsController do
         }.to change(Event, :count).by(1)
       end
 
-      # it 'responds with a status code of 302' do
-      #   expect(response.status).to eq 302
-      # end
-
-
       it 'assigns the newly created event as @event' do
         expect(assigns[:event]).to eq(Event.last)
       end
 
       it 'redirects to the created event'do
+        post :create,  { :event => valid_attributes }
         expect(response).to redirect_to "/events/#{Event.last.id}"
       end
 
     end
 
-    xcontext 'when invalid params are passed' do
+    context 'when invalid params are passed' do
       before(:each) do
         post :create, { event: { title: 'this' } }
       end
 
       it 'responds with a status code of 422' do
-
+        expect(response).to have_http_status(422)
       end
 
       it 'does not create a new event in the database' do
-
+        expect { post :create, { event: { title: 'this' } } }.to_not change(Event, :count)
       end
 
       it 'assigns the unsaved event as @event' do
-
+        expect(assigns[:event]).to be_a(Event)
       end
 
       it 'renders the :new template' do
-
+        expect(response).to render_template :new
       end
 
     end

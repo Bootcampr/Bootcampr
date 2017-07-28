@@ -11,10 +11,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      # status 302
-      redirect_to "events/#{@event.id}"
+      redirect_to @event
     else
-      erb :'/events/new'
+      render :new, status: 422
     end
   end
 
