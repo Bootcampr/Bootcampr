@@ -1,4 +1,9 @@
+require 'date_time_attribute'
+
 class Event < ApplicationRecord
+    include DateTimeAttribute
+    attr_accessor :due_at
+    date_time_attribute :due_at
 
     validates_presence_of :title, :date, :time, :location, :summary
 
@@ -13,5 +18,4 @@ class Event < ApplicationRecord
     def month
       self.format_date[0] + self.format_date[1]
     end
-
 end

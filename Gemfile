@@ -35,6 +35,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'dotenv-rails'
 gem 'omniauth-github'
+gem 'date_time_attribute'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

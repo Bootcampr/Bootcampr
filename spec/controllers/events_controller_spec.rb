@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe EventsController do
+  let(:test_event) { Event.create(title: 'title', date: '2017-07-27', time: '2000-01-01 23:51:12', location: 'sea', summary: 'that') }
   let!(:event) { FactoryGirl.build(:event) }
 
   describe 'GET #index' do
@@ -13,7 +14,7 @@ describe EventsController do
     end
 
     it 'assigns all events as @events' do
-      expect(assigns[:events]).to eq(Event.all)
+      expect(assigns[:events]).to eq(Event.all.order(:date, :time))
     end
 
     it 'renders the :index template' do
@@ -90,17 +91,17 @@ end
 
 describe 'GET #show' do
   it "responds with status code 200" do
-    get :show, { id: event.id }
+    get :show, { id: test_event.id }
     expect(response).to have_http_status 200
   end
 
   it "assigns the correct event as @event" do
-    get :show, { id: event.id }
-    expect(assigns(:event)).to eq(event)
+    get :show, { id: test_event.id }
+    expect(assigns(:event)).to eq(test_event)
   end
-  
+
   it "renders the :show template" do
-    get :show, { id: event.id }
+    get :show, { id: test_event.id }
     expect(response).to render_template(:show)
   end
 
