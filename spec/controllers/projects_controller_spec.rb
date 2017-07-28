@@ -24,7 +24,6 @@ RSpec.describe ProjectsController, type: :controller do
     before(:each) { get :show, params: { id: Project.first.id } }
 
     it 'returns a status of 200' do
-      p Project.all
       expect(response).to have_http_status 200
     end
 
