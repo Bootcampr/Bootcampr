@@ -35,6 +35,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'dotenv-rails'
 gem 'omniauth-github'
+gem 'date_time_attribute'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,8 +48,13 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'
+  gem 'simplecov', :require => false, :group => :test
+
+
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+
   gem 'capybara-rails'
+
 end
 
 group :development do

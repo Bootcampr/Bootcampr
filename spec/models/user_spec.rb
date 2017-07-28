@@ -6,4 +6,8 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:password) }
     # it { should validate_uniqueness_of(:email) }
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:events) }
+  end
 end

@@ -1,0 +1,5 @@
+  <div>
+    <% if events.date > Date.today %>
+      <%= events.format_date %>     <%= link_to "#{events.title}", event_path(events) %>  @   <%= events.format_time %>
+    <% end %>
+  </div>
