@@ -1,7 +1,7 @@
 <div>
   <h1> <%= @event.title %></h1>
-  <%= @event.date %><br>
-  <%= @event.time %><br>
-  <%= @event.location %><br>
-  <%= @event.summary %><br><br>
+  Date: <%= @event.date.strftime('%m/%d/%Y') %><br>
+  Time: <%= @event.time.strftime('%I:%M %p') %><br>
+  Location: <%= @event.location %><br>
+  Summary: <%= @event.summary %><br><br>
 </div>
