@@ -1,0 +1,33 @@
+<h2>Create bootCampr Profile</h2>
+
+<% if @user.errors.any? %>
+  <h3>Please fix the following errors:</h3>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="create-profile-form">
+     <%= form_for @user do |f| %>
+
+     <%= f.label :first_name %>
+     <%= f.text_field :first_name %>
+
+     <%= f.label :last_name %>
+     <%= f.text_field :last_name %>
+
+     <%= f.label :bootcamp %>
+     <%= f.text_field :bootcamp%>
+
+     <%= f.label :location %>
+     <%= f.text_field :location%>
+
+     <%= f.label :summary %>
+     <%= f.text_area :summary %>
+
+     <%= f.submit %>
+
+   <% end %>
+</div>
