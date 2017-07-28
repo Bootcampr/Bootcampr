@@ -1,8 +1,8 @@
-<h2>Projects</h2>
+<div class='page-title'><h2>Projects</h2>
 
 <% @projects.each do |project| %>
-  <h5><%= project.title %></h5>
-  <p>
-    <%= project.summary %>
-  </p>
+  <div class='project'>
+    <div class='project-title'><h3><%= project.title %><h3></div>
+    <div class='project-summary'><%= project.summary %></div>
+  </div>
 <% end %>
