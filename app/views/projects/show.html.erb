@@ -1,3 +1,21 @@
-working
+<div><h2><%= @project.title %></h2></div>
 
-<%= @project.id %>
+<p>
+  <%= @project.summary %>
+</p>
+
+<div>
+  <strong>Project Owner:</strong> <%= @project.owner.first_name %> <%= @project.owner.last_name %>
+</div>
+
+<div>
+  <strong>Potential stack:</strong> <%= @project.stack %>
+</div>
+
+<div>
+  <strong>Repository:</strong> <%= @project.repository %>
+</div>
+
+<div>
+  <h3>Upcoming Events</h3>
+</div>
