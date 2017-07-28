@@ -3,7 +3,7 @@ FactoryGirl.define do
     title "MyString"
     date "2017-07-27"
     time "2017-07-27 14:53:02"
-    summary "MyText"
     location "MyString"
+    summary "MyText"
   end
 end
