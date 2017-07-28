@@ -1,0 +1,16 @@
+<h1>New Event</h1><br>
+
+<div>
+  <% @event.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <%= form_for @event do |f| %>
+    Title: <%= f.text_field :title %><br>
+    Date: <%= f.date_field :date %><br>
+    Time: <%= f.time_field :time %><br>
+    Location: <%= f.text_field :location %><br>
+    Summary: <%= f.text_field :summary %><br>
+    <%= f.submit %><br>
+  <% end %>
+</div>
