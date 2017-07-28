@@ -2,6 +2,8 @@
 require 'spec_helper'
 require 'shoulda-matchers'
 require 'factory_girl_rails'
+require 'simplecov'
+SimpleCov.start
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
