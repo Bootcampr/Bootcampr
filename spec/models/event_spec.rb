@@ -7,6 +7,7 @@ RSpec.describe Event, type: :model do
   it { is_expected.to validate_presence_of(:time) }
   it { is_expected.to validate_presence_of(:location) }
   it { is_expected.to validate_presence_of(:summary) }
-
-
+  describe 'associations' do
+    it { is_expected.to belong_to(:owner) }
+  end
 end
