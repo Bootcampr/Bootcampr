@@ -62,7 +62,7 @@ describe EventsController do
       it 'redirects to the created event'do
       sign_in user
       post :create,  { :event => valid_attributes }
-      expect(response.location).to include("/events/")
+      expect(response.location).to include("/events/#{Event.last.id}")
     end
 
   end
