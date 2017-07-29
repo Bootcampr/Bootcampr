@@ -16,12 +16,14 @@
   <strong>Repository:</strong> <%= @project.repository %>
 </div>
 
-<div>
-  <h3>Upcoming Events</h3>
+<% if !@project.events.empty? %>
+  <div>
+    <h3>Upcoming Events</h3>
 
-  <% @project.events.each do |event| %>
-    <div>
-      <%= link_to event.title, event_path %>
-    </div>
-  <% end %>
-</div>
+    <% @project.events.each do |event| %>
+      <div>
+        <%= link_to event.title, event_path %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

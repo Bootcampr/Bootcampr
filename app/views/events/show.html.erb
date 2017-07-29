@@ -5,13 +5,15 @@
   Location: <%= @event.location %><br>
   Summary: <%= @event.summary %><br><br>
 
-  <div>
-    <h3>Related Projects</h3>
+  <% if !@event.projects.empty? %>
+    <div>
+      <h3>Related Projects</h3>
 
-    <% @event.projects.each do |project| %>
-      <div>
-        <%= link_to project.title, project_path %>
-      </div>
-    <% end %>
-  </div>
+      <% @event.projects.each do |project| %>
+        <div>
+          <%= link_to project.title, project_path %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
