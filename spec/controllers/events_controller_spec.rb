@@ -150,4 +150,19 @@ describe '#update' do
   end
 end
 
+describe '#destroy' do
+  before(:each) do
+    event = FactoryGirl.create(:event)
+    delete :destroy, params: { id: event.id }
+  end
+
+  it 'should return status 302' do
+    expect(response.status).to eq 302
+  end
+
+  it 'changes the number of total Events' do
+    expect(Event.all.length).to eq 0
+  end
+end
+
 end
