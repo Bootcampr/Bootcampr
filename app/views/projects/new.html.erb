@@ -1,0 +1,15 @@
+<h1>New Project</h1><br>
+
+<div>
+  <% @event.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <%= form_for @project do |f| %>
+    Title: <%= f.text_field :title %><br>
+    Summary: <%= f.date_field :summary %><br>
+    Stack: <%= f.time_field :stack %><br>
+    Repo: <%= f.text_field :repository %><br>
+    <%= f.submit %><br>
+  <% end %>
+</div>
