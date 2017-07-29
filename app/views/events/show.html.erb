@@ -4,7 +4,10 @@
   Time: <%= @event.time.strftime('%I:%M %p') %><br>
   Location: <%= @event.location %><br>
   Summary: <%= @event.summary %><br><br>
-
+  Coordinator: <%= @event.owner.full_name %>
+  <% if @event.owner == current_user %>
+  <%= link_to 'Edit', edit_event_path %>
+  <% end %>
   <% if !@event.projects.empty? %>
     <div>
       <h3>Related Projects</h3>
