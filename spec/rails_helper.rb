@@ -2,11 +2,6 @@
 require 'spec_helper'
 require 'shoulda-matchers'
 require 'factory_girl_rails'
-require 'devise'
-RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :view
-end
 
 
 
@@ -24,6 +19,11 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+require 'devise'
+RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

@@ -58,22 +58,23 @@ RSpec.describe ProjectsController, type: :controller do
 
 
   describe 'POST #create' do
-    let(:valid_attributes) { FactoryGirl.create(:project).attributes }
+    let(:valid_attributes) { FactoryGirl.build(:project).attributes }
     context 'when valid params are passed' do
-      before(:each) do
-        post :create,  { :project => valid_attributes }
-      end
 
       it 'creates a new project in the database' do
+        sign_in user
         expect { post :create,  { :project => valid_attributes }
         }.to change(Project, :count).by(1)
       end
 
       it 'assigns the newly created project as @project' do
+        sign_in user
+        post :create,  { :project => valid_attributes }
         expect(assigns[:project]).to eq(Project.last)
       end
 
       it 'redirects to the created project'do
+        sign_in user
         post :create,  { :project => valid_attributes }
         expect(response).to redirect_to "/projects/#{Project.last.id}"
       end
