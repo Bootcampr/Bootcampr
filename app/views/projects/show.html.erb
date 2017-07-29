@@ -5,7 +5,14 @@
 </p>
 
 <div>
-  <strong>Project Owner:</strong> <%= @project.owner.first_name %> <%= @project.owner.last_name %>
+  <strong>Project Owner:</strong>
+
+  <% if @project.owner.first_name == nil && current_user %>
+    To add your name here, edit your profile and include your name there.
+  <% else %>
+  <%= @project.owner.first_name %> <%= @project.owner.last_name %>
+  <% end %>
+
 </div>
 
 <div>
