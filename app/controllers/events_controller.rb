@@ -50,7 +50,9 @@ class EventsController < ApplicationController
   end
 
   def create
+    # p event_params[:categories]
     @event = Event.new(event_params)
+    @event.tag_list = event_params[:tag_list]
     @event.owner = current_user
     if @event.save
       redirect_to @event
@@ -67,7 +69,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :date, :time, :location, :summary)
+    params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list)
   end
 
   def month
