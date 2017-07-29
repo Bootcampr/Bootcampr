@@ -50,7 +50,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    # p event_params[:categories]
     @event = Event.new(event_params)
     @event.tag_list = event_params[:tag_list]
     @event.owner = current_user
