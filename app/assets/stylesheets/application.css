@@ -13,18 +13,3 @@
  *= require_tree .
  *= require_self
  */
-nav {
-  float: right;
-}
-
-nav li {
-  display: inline-block;
-}
-
-li a {
-  text-decoration: none;
-}
-
-.title {
-  display: inline;
-}
