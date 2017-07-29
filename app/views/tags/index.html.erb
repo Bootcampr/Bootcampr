@@ -1,0 +1,7 @@
+<h2>Tags</h2>
+
+<% @tags.each do |tag| %>
+  <div class='tag'>
+    <%= link_to tag.name, tag %>
+  </div>
+<% end %>
