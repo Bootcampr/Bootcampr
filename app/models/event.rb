@@ -4,6 +4,8 @@ class Event < ApplicationRecord
     belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
     has_many :events_projects
     has_many :projects, through: :events_projects
+    acts_as_taggable
+    acts_as_taggable_on :categories
 
     def format_time
       self.time.strftime('%I:%M %p')

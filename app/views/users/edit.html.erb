@@ -1,6 +1,9 @@
 <div class="edit-userpage-container">
-
-  <h2>Edit bootCampr Profile</h2>
+  <% if @user.first_name == nil %>
+    <h2>Create Bootcampr Profile</h2>
+  <% else %>
+    <h2>Edit Bootcampr Profile</h2>
+  <% end %>
 
   <% if @user.errors.any? %>
     <h3>Please fix the following errors:</h3>
@@ -28,6 +31,9 @@
 
        <%= f.label :summary %>
        <%= f.text_area :summary %>
+
+       <%= f.label :interests %>
+       <%= f.text_field :tag_list, value: @user.tag_list.join(', ') %>
 
        <%= f.submit %>
 

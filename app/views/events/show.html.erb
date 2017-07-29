@@ -6,10 +6,17 @@
   Summary: <%= @event.summary %><br><br>
   Coordinator: <%= @event.owner.full_name %>
   <% if @event.owner == current_user %>
-  <%= link_to 'Edit', edit_event_path %>
+    <%= link_to 'Edit', edit_event_path %>
   <% end %>
-  <% if !@event.projects.empty? %>
+
+
+  <% if !@event.tag_list.empty? %>
     <div>
+      <strong>Categories:</strong> <%= safe_join(@event.tag_list.map { |tag| link_to(tag, tag_path(Tag.find_by(name: tag))) }, ", ".html_safe) %>
+    </div>
+  <% end %>
+
+  <% if !@event.projects.empty? %>
       <h3>Related Projects</h3>
 
       <% @event.projects.each do |project| %>

@@ -14,4 +14,11 @@
   <p class="user-details"><%= @user.summary %></p>
 </div>
 
+<div class='user-profile-tags user-profile'>
+  <p>Interests:</p>
+  <p class="user-details">
+    <%= safe_join(@user.tag_list.map { |tag| link_to(tag, tag_path(Tag.find_by(name: tag))) }, ", ".html_safe) %>
+  </p>
+</div>
+
 <%= link_to "Edit", edit_user_path(current_user) %>
