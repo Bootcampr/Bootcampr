@@ -21,7 +21,6 @@ describe EventsController do
     it 'renders the :index template' do
       expect(response).to render_template :index
     end
-
   end
 
   describe 'GET #new' do
@@ -40,7 +39,6 @@ describe EventsController do
     it 'renders the :new template' do
       expect(response).to render_template :new
     end
-
   end
 
   describe 'POST #create' do
@@ -64,7 +62,6 @@ describe EventsController do
       post :create,  { :event => valid_attributes }
       expect(response.location).to include("/events/#{Event.last.id}")
     end
-
   end
 
   context 'when invalid params are passed' do
@@ -87,7 +84,6 @@ describe EventsController do
     it 'renders the :new template' do
       expect(response).to render_template :new
     end
-
   end
 end
 
@@ -124,7 +120,34 @@ describe 'GET #edit' do
     get :edit, { id: test_event.id }
     expect(response).to render_template(:edit)
   end
+end
 
+describe '#update' do
+  let!(:new_attributes) { FactoryGirl.create(:event).attributes }
+  before(:each) do
+    patch :update, params: { id: test_event.id, event: new_attributes }
+    test_event.reload
+  end
+
+  it 'returns a status of 302' do
+    expect(response).to have_http_status 302
+  end
+
+  it 'assigns @event' do
+    expect(assigns[:event]).to eq test_event
+  end
+
+  it 'reassigns the events title' do
+    expect(test_event.title).to eq 'MyString'
+  end
+
+  it 'reassigns the events summary' do
+    expect(test_event.summary).to eq 'MyText'
+  end
+
+  it 'renders the event#show view' do
+    expect(response.location).to include("/events/#{test_event.id}")
+  end
 end
 
 end
