@@ -1,33 +1,37 @@
-<h2>Create bootCampr Profile</h2>
+<div class="edit-userpage-container">
 
-<% if @user.errors.any? %>
-  <h3>Please fix the following errors:</h3>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <h2>Edit bootCampr Profile</h2>
 
-<div class="create-profile-form">
-     <%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <h3>Please fix the following errors:</h3>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-     <%= f.label :first_name %>
-     <%= f.text_field :first_name %>
+  <div class="edit-profile-form">
+       <%= form_for @user do |f| %>
 
-     <%= f.label :last_name %>
-     <%= f.text_field :last_name %>
+       <%= f.label :first_name %>
+       <%= f.text_field :first_name %>
 
-     <%= f.label :bootcamp %>
-     <%= f.text_field :bootcamp%>
+       <%= f.label :last_name %>
+       <%= f.text_field :last_name %>
 
-     <%= f.label :location %>
-     <%= f.text_field :location%>
+       <%= f.label :bootcamp %>
+       <%= f.text_field :bootcamp%>
 
-     <%= f.label :summary %>
-     <%= f.text_area :summary %>
+       <%= f.label :location %>
+       <%= f.text_field :location%>
 
-     <%= f.submit %>
+       <%= f.label :summary %>
+       <%= f.text_area :summary %>
 
-   <% end %>
+       <%= f.submit %>
+
+     <% end %>
+  </div>
+
 </div>
