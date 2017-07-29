@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :show]
 
+  resources :tags, only: [:index, :show]
+
   root to: 'pages#index'
 
 end
