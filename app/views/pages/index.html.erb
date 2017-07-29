@@ -1,25 +1,32 @@
-<div class="upcoming-events-list">
-  <h2>Upcoming Events</h2>
-  <% @upcoming_events.each do |event| %>
+<div class="columns">
+  <div class="upcoming-events-list">
+    <h2>Upcoming Events</h2>
+    <% @upcoming_events.each do |event| %>
     <ul>
       <li> <%= event.date %> <%= event.title %> </li>
     </ul>
-  <% end %>
-</div>
-<div class="recent-projects-list">
-  <h2>Recent Projects</h2>
-  <% @recent_projects.each do |project| %>
+    <% end %>
+  </div>
+  <div class="recent-projects-list">
+    <h2>Recent Projects</h2>
+    <% @recent_projects.each do |project| %>
     <ul>
-      <li> <%= project.title %> by <%= User.find(project.owner_id).email %></li>
+      <% if project.repository != nil %>
+        <li> <%= link_to "#{project.title}", project.repository, class: 'project-link' %> by <%= User.find(project.owner_id).email %></li>
+      <% else %>
+        <li> <%= project.title %> by <%= User.find(project.owner_id).email %></li>
+      <% end %>
     </ul>
-  <% end %>
-</div>
-<div class="hard-sell">
-  <h2>Bootcamp Grads!</h2>
-  <p>
-    Building a community of web developers from non-traditional backgrouds as well as those looking to meet and working with peers.
-  </p>
-  <p>Become a bootcampr <%= link_to "today!", new_user_registration_path %></p>
-  <p>or, if you're already aweseome,</p>
-  <p><%= link_to "Log In!", new_user_session_path %></p>
+    <% end %>
+  </div>
+  <div class="hard-sell">
+    <h2>Who we is...</h2>
+    <p>Calling all Seattle Bootcamp Grads. This is a call to unite.</p>
+    <p>
+      We are a group of bootcamprs from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
+    </p>
+    <p>Become a bootcampr <%= link_to "today!", new_user_registration_path %></p>
+    <p>or, if you're already aweseome,</p>
+    <p><%= link_to "Log In!", new_user_session_path %></p>
+  </div>
 </div>

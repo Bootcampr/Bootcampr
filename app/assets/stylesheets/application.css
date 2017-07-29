@@ -14,30 +14,34 @@
  *= require_self
  */
 
- .upcoming-events-list {
-   width: 33%;
-   float: left;
- }
+a {
+  text-decoration: none;
+}
 
- .recent-projects-list {
-   width: 33%;
-   float: left;
- }
+.upcoming-events-list {
+ width: 33%;
+ float: left;
+}
 
- .hard-sell {
-   width: 33%;
-   float: left;
- }
+.recent-projects-list {
+ width: 33%;
+ float: left;
+}
 
- .navbar {
-   float: right;
- }
+.hard-sell {
+ width: 33%;
+ float: left;
+}
 
- .navbar a {
-   text-decoration: none;
- }
+.navbar {
+ float: right;
+}
 
- .navbar li {
-   list-style: none;
-   display: inline-block;
- }
+.navbar li {
+ list-style: none;
+ display: inline-block;
+}
+
+.project-link {
+ font-weight: bold;
+}
