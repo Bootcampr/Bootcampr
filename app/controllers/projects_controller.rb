@@ -13,11 +13,25 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.owner = current_user
+    @project.owner = current_project
     if @project.save
       redirect_to project_path(@project)
     else
       render :new, status: 422
+    end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      redirect_to project_path(@project)
+    else
+      render :edit
     end
   end
 

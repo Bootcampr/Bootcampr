@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :pages, only: [:index]
 
-  resources :projects, only: [:index, :show, :new, :create]
+  resources :projects
   root to: 'pages#index'
 
 end
