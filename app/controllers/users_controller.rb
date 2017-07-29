@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    @user.assign_attributes(user_params)
+    @user.tag_list = user_params[:tag_list]
+    if @user.save
       redirect_to @user
     else
       render :edit
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :bootcamp, :location, :summary)
+    params.require(:user).permit(:first_name, :last_name, :bootcamp, :location, :summary, :tag_list)
   end
 
 

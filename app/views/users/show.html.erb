@@ -14,4 +14,11 @@
   <p class="user-details"><%= @user.summary %></p>
 </div>
 
+<div class='user-profile-tags user-profile'>
+  <p>Interests:</p>
+  <p class="user-details">
+    <%= @user.tag_list.join(', ') %>
+  </p>
+</div>
+
 <%= link_to "Edit", edit_user_path(current_user) %>
