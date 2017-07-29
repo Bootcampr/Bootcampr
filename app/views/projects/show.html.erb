@@ -20,6 +20,8 @@
   <h3>Upcoming Events</h3>
 
   <% @project.events.each do |event| %>
-    <%= link_to event.title, event_path %>
+    <div>
+      <%= link_to event.title, event_path %>
+    </div>
   <% end %>
 </div>
