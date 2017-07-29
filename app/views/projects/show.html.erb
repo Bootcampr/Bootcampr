@@ -23,6 +23,12 @@
   <strong>Repository:</strong> <%= @project.repository %>
 </div>
 
+<% if !@event.tag_list.empty? %>
+  <div>
+    <strong>Categories:</strong> <%= @event.tag_list.join(', ') %>
+  </div>
+<% end %>
+
 <% if !@project.events.empty? %>
   <div>
     <h3>Upcoming Events</h3>

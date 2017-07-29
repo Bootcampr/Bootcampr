@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :projects, foreign_key: 'owner_id'
+  acts_as_taggable
+  acts_as_taggable_on :interests
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and
