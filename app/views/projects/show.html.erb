@@ -23,7 +23,7 @@
   <strong>Repository:</strong> <%= @project.repository %>
 </div>
 
-<% if !@event.tag_list.empty? %>
+<% if !@project.tag_list.empty? %>
   <div>
     <strong>Categories:</strong> <%= @event.tag_list.join(', ') %>
   </div>
@@ -41,4 +41,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_project_path %>
+<%= link_to 'Edit', edit_project_path %><br>
+<%= link_to 'Scrap this project', project_path(@project), method: :delete, data: { confirm: "Are you sure you'd like to delete this project?" } %>
