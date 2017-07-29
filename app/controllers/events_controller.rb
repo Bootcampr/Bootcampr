@@ -70,8 +70,4 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :date, :time, :location, :summary)
   end
 
-  def month
-    all_months = []
-
-  end
 end
