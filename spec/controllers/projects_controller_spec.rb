@@ -54,4 +54,51 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
   end
+
+
+  describe 'POST #create' do
+    let(:valid_attributes) { FactoryGirl.build(:project).attributes }
+    context 'when valid params are passed' do
+
+      it 'creates a new project in the database' do
+        expect {
+          post :create,  { :project => valid_attributes }
+        }.to change(Project, :count).by(1)
+      end
+
+      it 'assigns the newly created project as @project' do
+        expect(assigns[:project]).to eq(Project.last)
+      end
+
+      it 'redirects to the created project'do
+        post :create,  { :project => valid_attributes }
+        expect(response).to redirect_to "/projects/#{Project.last.id}"
+      end
+
+    end
+
+    context 'when invalid params are passed' do
+      before(:each) do
+        post :create, { project: { title: 'this' } }
+      end
+
+      it 'responds with a status code of 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'does not create a new project in the database' do
+        expect { post :create, { project: { title: 'this' } } }.to_not change(Project, :count)
+      end
+
+      it 'assigns the unsaved project as @project' do
+        expect(assigns[:project]).to be_a(Project)
+      end
+
+      it 'renders the :new template' do
+        expect(response).to render_template :new
+      end
+
+    end
+  end
+
 end
