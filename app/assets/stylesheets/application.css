@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+ .upcoming-events-list {
+   width: 33%;
+   float: left;
+ }
+
+ .recent-projects-list {
+   width: 33%;
+   float: left;
+ }
+
+ .hard-sell {
+   width: 33%;
+   float: left;
+ }
+
+ .navbar {
+   float: right;
+ }
+
+ .navbar a {
+   text-decoration: none;
+ }
+
+ .navbar li {
+   list-style: none;
+   display: inline-block;
+ }

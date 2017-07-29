@@ -1,2 +1,25 @@
-<h2>Upcoming Events</h2>
-<%= render partial: 'events', collection: @upcoming_events %>
+<div class="upcoming-events-list">
+  <h2>Upcoming Events</h2>
+  <% @upcoming_events.each do |e| %>
+    <ul>
+      <li> <%= e.date %> <%= e.title %> </li>
+    </ul>
+  <% end %>
+</div>
+<div class="recent-projects-list">
+  <h2>Recent Projects</h2>
+  <% @recent_projects.each do |e| %>
+    <ul>
+      <li> <%= e.title %> by <%= User.find(e.owner_id).email %></li>
+    </ul>
+  <% end %>
+</div>
+<div class="hard-sell">
+  <h2>Bootcamp Grads!</h2>
+  <p>
+    Building a community of web developers from non-traditional backgrouds as well as those looking to meet and working with peers.
+  </p>
+  <p>Become a bootcampr <%= link_to "today!", new_user_registration_path %></p>
+  <p>or, if you're already aweseome,</p>
+  <p><%= link_to "Log In!", new_user_session_path %></p>
+</div>

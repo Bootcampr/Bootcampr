@@ -5,5 +5,6 @@ FactoryGirl.define do
     time "2017-07-27 14:53:02"
     location "MyString"
     summary "MyText"
+    owner_id 1
   end
 end
