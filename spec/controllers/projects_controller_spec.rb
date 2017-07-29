@@ -35,4 +35,23 @@ RSpec.describe ProjectsController, type: :controller do
       expect(response).to render_template :show
     end
   end
+
+  describe 'GET #new' do
+    before(:each) do
+      get :new
+    end
+
+    it 'responds with a status code of 200' do
+      expect(response.status).to eq 200
+    end
+
+    it 'assigns a new project to @project' do
+      expect(assigns[:project]).to be_a_new(Project)
+    end
+
+    it 'renders the :new template' do
+      expect(response).to render_template :new
+    end
+
+  end
 end
