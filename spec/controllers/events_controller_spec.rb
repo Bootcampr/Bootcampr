@@ -93,10 +93,6 @@ end
 
 describe 'GET #show' do
   it "responds with status code 200" do
-    puts "*" * 50
-    p test_event.id
-    p test_event
-    puts "*" * 50
     get :show, { id: test_event.id }
     expect(response).to have_http_status 200
   end
