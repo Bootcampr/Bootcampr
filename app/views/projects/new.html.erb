@@ -9,8 +9,8 @@
 <div>
   <%= form_for @project do |f| %>
     Title: <%= f.text_field :title %><br>
-    Summary: <%= f.date_field :summary %><br>
-    Stack: <%= f.time_field :stack %><br>
+    Summary: <%= f.text_field :summary %><br>
+    Stack: <%= f.text_field :stack %><br>
     Repo: <%= f.text_field :repository %><br>
     <%= f.submit %><br>
   <% end %>
