@@ -4,8 +4,10 @@
   <% @event.errors.full_messages.each do |msg| %>
     <%= msg %>
   <% end %>
+</div>
 
-  <%= form_for @project do |f| %>
+<div>
+    <%= form_for @project do |f| %>
     Title: <%= f.text_field :title %><br>
     Summary: <%= f.date_field :summary %><br>
     Stack: <%= f.time_field :stack %><br>
