@@ -2,6 +2,12 @@
 require 'spec_helper'
 require 'shoulda-matchers'
 require 'factory_girl_rails'
+require 'devise'
+RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+end
+
 
 
 ENV['RAILS_ENV'] ||= 'test'

@@ -4,6 +4,7 @@ RSpec.describe ProjectsController, type: :controller do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:project) { FactoryGirl.create(:project) }
 
+
   describe '#index' do
     before(:each) { get :index }
 
@@ -57,12 +58,14 @@ RSpec.describe ProjectsController, type: :controller do
 
 
   describe 'POST #create' do
-    let(:valid_attributes) { FactoryGirl.build(:project).attributes }
+    let(:valid_attributes) { FactoryGirl.create(:project).attributes }
     context 'when valid params are passed' do
+      before(:each) do
+        post :create,  { :project => valid_attributes }
+      end
 
       it 'creates a new project in the database' do
-        expect {
-          post :create,  { :project => valid_attributes }
+        expect { post :create,  { :project => valid_attributes }
         }.to change(Project, :count).by(1)
       end
 
