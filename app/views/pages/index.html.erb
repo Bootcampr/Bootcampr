@@ -1,16 +1,16 @@
 <div class="upcoming-events-list">
   <h2>Upcoming Events</h2>
-  <% @upcoming_events.each do |e| %>
+  <% @upcoming_events.each do |event| %>
     <ul>
-      <li> <%= e.date %> <%= e.title %> </li>
+      <li> <%= event.date %> <%= event.title %> </li>
     </ul>
   <% end %>
 </div>
 <div class="recent-projects-list">
   <h2>Recent Projects</h2>
-  <% @recent_projects.each do |e| %>
+  <% @recent_projects.each do |project| %>
     <ul>
-      <li> <%= e.title %> by <%= User.find(e.owner_id).email %></li>
+      <li> <%= project.title %> by <%= User.find(project.owner_id).email %></li>
     </ul>
   <% end %>
 </div>
