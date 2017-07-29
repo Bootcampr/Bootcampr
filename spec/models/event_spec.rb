@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   let(:test_event) { Event.create(title: 'title', date: '2017-07-27', time: '2000-01-01 23:51:12', location: 'sea', summary: 'that') }
-  
+
   context 'validations' do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:date) }
@@ -25,5 +25,7 @@ RSpec.describe Event, type: :model do
 
   context 'associations' do
     it { is_expected.to belong_to(:owner) }
+    # it { is_expected.to have_many :events_projects }
+    # it { is_expected.to have_many :projects }
   end
 end
