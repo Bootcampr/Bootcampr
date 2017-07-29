@@ -28,10 +28,15 @@ describe PagesController do
     end
 
     it 'only assigns 5 upcoming events to upcoming events' do
-      p '*********************************'
-      p assigns[:upcoming_events]
-      p Event.order(date: :desc).limit(5)
       expect(assigns[:upcoming_events].length).to eq(5)
+    end
+
+    it 'assigns recent projects as @recent_projects' do
+      expect(assigns[:recent_projects]).to eq(Project.order(created_at: :desc).limit(5))
+    end
+
+    it 'only assigns 5 recent projects to recent projects' do
+      expect(assigns[:recent_projects].length).to eq(5)
     end
 
     it 'renders the index page' do
