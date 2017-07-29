@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @user.tag_list = user_params[:tag_list]
     if @user.save
       flash[:success] = "Updated profile"
-      sign_in @user
       redirect_to @user
     else
       render :edit

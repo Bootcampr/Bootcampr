@@ -40,12 +40,12 @@ RSpec.describe UsersController, type: :controller do
     let!(:new_attributes) { FactoryGirl.create(:user).attributes }
     # before(:each) { patch :update, params: { id: user.id, user: new_attributes } }
 
-    it 'returns a status of 302' do
-      expect(response).to have_http_status 302
+    it 'returns a status of 200' do
+      expect(response).to have_http_status 200
     end
 
     it 'assigns @users' do
-      sign_in user
+      patch :update, params: { id: user.id, user: new_attributes }
       expect(assigns[:user]).to eq user
     end
 
@@ -62,7 +62,8 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'renders the users#show view' do
-      expect(response).to render_template :show
+      patch :update, params: { id: test_user.id, user: new_attributes }
+      expect(response.location).to include("/users/#{test_user.id}")
     end
   end
 end
