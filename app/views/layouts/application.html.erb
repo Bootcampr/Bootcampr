@@ -11,16 +11,21 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <nav>
-      <ul>
-        <% if user_signed_in? %>
+    <header>
+      <nav class='navbar'>
+        <ul>
+          <% if user_signed_in? %>
           <li> <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %> </li>
-        <% else %>
+          <% else %>
           <li> <%= link_to 'Sign Up', new_user_registration_path %> </li>
           <li> <%= link_to 'Log In', new_user_session_path %> </li>
-        <% end %>
-      </ul>
-    </nav>
+          <% end %>
+          <li> <%= link_to 'Events', events_path %> </li>
+          <li> <%= link_to 'Projects', projects_path %> </li>
+        </ul>
+      </nav>
+      <h1><%= link_to 'BootCampr', root_path %></h1>
+    </header>
     <%= yield %>
   </body>
 </html>

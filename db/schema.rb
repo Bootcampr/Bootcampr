@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20170728215013) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.text     "summary"
+    t.string   "title",      null: false
+    t.text     "summary",    null: false
     t.text     "stack"
-    t.integer  "owner_id"
+    t.integer  "owner_id",   null: false
     t.string   "repository"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,11 +51,6 @@ ActiveRecord::Schema.define(version: 20170728215013) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "bootcamp"
-    t.string   "location"
-    t.text     "summary"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
