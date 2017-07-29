@@ -5,8 +5,13 @@
   Location: <%= @event.location %><br>
   Summary: <%= @event.summary %><br><br>
 
-  <% if !@event.projects.empty? %>
+  <% if !@event.tag_list.empty? %>
     <div>
+      <strong>Categories:</strong> <%= @event.tag_list.join(', ') %>
+    </div>
+  <% end %>
+
+  <% if !@event.projects.empty? %>
       <h3>Related Projects</h3>
 
       <% @event.projects.each do |project| %>
