@@ -32,6 +32,9 @@
        <%= f.label :summary %>
        <%= f.text_area :summary %>
 
+       <%= f.label :interests %>
+       <%= f.text_field :tag_list, value: @user.tag_list.join(', ') %>
+
        <%= f.submit %>
 
      <% end %>
