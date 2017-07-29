@@ -44,7 +44,7 @@ describe EventsController do
 
   describe 'POST #create' do
     let(:valid_attributes) {
-      FactoryGirl.build(:event).attributes
+      FactoryGirl.create(:event).attributes
     }
     context 'when valid params are passed' do
 
