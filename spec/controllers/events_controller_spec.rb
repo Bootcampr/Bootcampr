@@ -109,4 +109,22 @@ describe 'GET #show' do
 
 end
 
+describe 'GET #edit' do
+  it "responds with status code 200" do
+    get :edit, { id: test_event.id }
+    expect(response).to have_http_status 200
+  end
+
+  it "assigns the correct event as @event" do
+    get :edit, { id: test_event.id }
+    expect(assigns(:event)).to eq(test_event)
+  end
+
+  it "renders the :edit template" do
+    get :edit, { id: test_event.id }
+    expect(response).to render_template(:edit)
+  end
+
+end
+
 end
