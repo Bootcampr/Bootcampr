@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe EventsController do
-  let(:test_event) { Event.create(title: 'title', date: '2017-07-27', time: '2000-01-01 23:51:12', location: 'sea', summary: 'that') }
+  let(:test_event) { Event.create(title: 'title', date: '2017-07-27', time: '2000-01-01 23:51:12', location: 'sea', summary: 'that', owner_id: 1) }
   let!(:event) { FactoryGirl.build(:event) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   describe 'GET #index' do
     before(:each) do
@@ -59,8 +60,9 @@ describe EventsController do
       end
 
       it 'redirects to the created event'do
+      sign_in user
       post :create,  { :event => valid_attributes }
-      expect(response).to redirect_to "/events/#{Event.last.id}"
+      expect(response.location).to include("/events/")
     end
 
   end
@@ -91,6 +93,10 @@ end
 
 describe 'GET #show' do
   it "responds with status code 200" do
+    puts "*" * 50
+    p test_event.id
+    p test_event
+    puts "*" * 50
     get :show, { id: test_event.id }
     expect(response).to have_http_status 200
   end
