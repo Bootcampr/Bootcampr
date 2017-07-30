@@ -151,6 +151,25 @@ RSpec.describe ProjectsController, type: :controller do
       patch :update, params: { id: project.id, project: new_attributes }
       expect(response.location).to include("/projects/#{project.id}")
     end
+
+    it 'renders the project#edit view if invalid' do
+      patch :update, params: { id: project.id, project: { title: '' } }
+      expect(response).to render_template(:edit)
+    end
+  end
+
+  describe '#destroy' do
+
+    before(:each) { delete :destroy, params: { id: project.id } }
+
+    it 'returns status of 302' do
+      expect(response.status).to eq 302
+    end
+
+    it 'changes the number of total Projects' do
+      expect(Project.all.length).to eq(0)
+    end
+
   end
 
 end
