@@ -74,10 +74,11 @@
     margin-bottom: 0.4em;
   }
 
-  .grid-item p {
-    color: transparentize($grid-item-color, 0.3);
+  .grid-item p, .grid-item ul {
+    // color: transparentize($grid-item-color, 0.3);
     line-height: 1.5em;
     margin: auto;
+    text-align: justify;
 
     @include media($medium-screen) {
       max-width: 70%;
