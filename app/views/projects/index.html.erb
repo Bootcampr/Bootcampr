@@ -1,7 +1,9 @@
 <div class='page-title'><h2>Projects</h2>
 
 <% if user_signed_in? %>
-  <%= link_to 'Add a project', new_project_path %>
+  <div>
+    Have a new project? Click <%= link_to 'here', new_project_path %> to list it.
+  </div>
 <% end %>
 
 
@@ -11,9 +13,3 @@
     <div class='project-summary'><%= project.summary %></div>
   </div>
 <% end %>
-
-<div>
-  <p>
-    Have a new project? Click <%= link_to 'here', new_project_path %> to list it.
-  </p>
-</div>
