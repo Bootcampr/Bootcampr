@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :show]
 
-  resources :projects, only: [:index, :show] do
+  resources :projects do
     resources :events, shallow: true
   end
 
