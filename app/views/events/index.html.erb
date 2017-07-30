@@ -3,7 +3,28 @@
 <% if user_signed_in? %>
 <%= link_to 'Add a New Event', new_event_path %>
 <% end %>
-<h3>January</h3>
+
+<div class='cards'>
+  <% @events.each do |event| %>
+  <div class='card'>
+    <div class="card-image">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">
+    </div>
+    <div class='card-header'>
+      <%= event.title %>
+    </div>
+    <div class='card-copy'>
+      <p>
+        <%= event.summary %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+
+<!-- <h3>January</h3>
   <%= render partial: 'events', collection: @january %>
 <h3>February</h3>
   <%= render partial: 'events', collection: @february %>
@@ -26,4 +47,4 @@
 <h3>November</h3>
   <%= render partial: 'events', collection: @november %>
 <h3>December</h3>
-  <%= render partial: 'events', collection: @december %>
+  <%= render partial: 'events', collection: @december %> -->
