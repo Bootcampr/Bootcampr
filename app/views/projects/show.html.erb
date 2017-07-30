@@ -5,7 +5,14 @@
 </p>
 
 <div>
-  <strong>Project Owner:</strong> <%= @project.owner.first_name %> <%= @project.owner.last_name %>
+  <strong>Project Owner:</strong>
+
+  <% if @project.owner.first_name == nil && current_user %>
+    To add your name here, edit your profile and include your name there.
+  <% else %>
+  <%= @project.owner.first_name %> <%= @project.owner.last_name %>
+  <% end %>
+
 </div>
 
 <div>
@@ -36,4 +43,9 @@
       </div>
     <% end %>
   </div>
+<% end %>
+
+<% if current_user == @project.owner %>
+  <%= link_to 'Edit', edit_project_path %><br>
+  <%= link_to 'Scrap this project', project_path(@project), method: :delete, data: { confirm: "Are you sure you'd like to delete this project?" } %>
 <% end %>
