@@ -1,3 +1,8 @@
+@import "neat";
+@import "nav-bar";
+@import "bourbon";
+@import "fp-columns";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,36 +15,18 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+html {
+  height: 100%;
+}
 
- .upcoming-events-list {
-   width: 33%;
-   float: left;
- }
+body {
+  min-height: 100%;
+}
 
- .recent-projects-list {
-   width: 33%;
-   float: left;
- }
-
- .hard-sell {
-   width: 33%;
-   float: left;
- }
-
- .navbar {
-   float: right;
- }
-
- .navbar a {
-   text-decoration: none;
- }
-
- .navbar li {
-   list-style: none;
-   display: inline-block;
+ html, body {
+   font-family: $helvetica;
  }
 
  .edit-profile-form input, .edit-profile-form textarea {
@@ -65,3 +52,26 @@
   font-weight: bold;
   font-size: 1.2em;
 }
+
+h1.title {
+  display: inline;
+  padding-left: 20px;
+}
+
+.front-page-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: darkblue;
+}
+
+// .container {
+//   max-width: 80%;
+//   margin: 0 auto;
+// }
