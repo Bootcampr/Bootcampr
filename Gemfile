@@ -35,7 +35,11 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'acts-as-taggable-on', '~> 4.0'
+
+# scss
 gem 'bourbon'
+gem 'neat', '~> 1.8'
+gem 'refills'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
