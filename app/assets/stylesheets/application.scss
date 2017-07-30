@@ -1,6 +1,7 @@
 @import "neat";
 @import "nav-bar";
 @import "bourbon";
+@import "fp-columns";
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -16,37 +17,16 @@
  *
  *= require_self
  */
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
 
  html, body {
    font-family: $helvetica;
- }
-
- .upcoming-events-list {
-   width: 33%;
-   float: left;
- }
-
- .recent-projects-list {
-   width: 33%;
-   float: left;
- }
-
- .hard-sell {
-   width: 33%;
-   float: left;
- }
-
- .navbar {
-   float: right;
- }
-
- .navbar a {
-   text-decoration: none;
- }
-
- .navbar li {
-   list-style: none;
-   display: inline-block;
  }
 
  .edit-profile-form input, .edit-profile-form textarea {
@@ -77,3 +57,13 @@ h1.title {
   display: inline;
   padding-left: 20px;
 }
+
+.front-page-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+// .container {
+//   max-width: 80%;
+//   margin: 0 auto;
+// }
