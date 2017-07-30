@@ -17,7 +17,8 @@
   $grid-item-columns: 4;
   $grid-item-big-columns: 8;
   $grid-item-color: white;
-  $grid-item-height: 25em;
+  // $grid-item-height: 25em;
+  $grid-item-min-height: 30em;
 
   @include clearfix;
 
@@ -31,9 +32,9 @@
     cursor: pointer;
     float: left;
     display: table-cell;
-    height: $grid-item-height;
+    height: $grid-item-min-height;
     outline: none;
-    overflow: hidden;
+    overflow: auto;
     padding: 2em;
     text-align: center;
     text-decoration: none;
