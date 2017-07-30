@@ -38,7 +38,6 @@ RSpec.describe UsersController, type: :controller do
   describe '#update' do
     let!(:test_user) { User.create(email: 'asdf@asdf.com', password: 'hellossd') }
     let!(:new_attributes) { FactoryGirl.create(:user).attributes }
-    # before(:each) { patch :update, params: { id: user.id, user: new_attributes } }
 
     it 'returns a status of 200' do
       expect(response).to have_http_status 200

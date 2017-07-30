@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:github]
 
   has_many :events, foreign_key: 'owner_id'
-
+  # :nocov:
    def self.from_omniauth(auth)
      where(provider: auth.provider, uid: auth.uid.to_s).first_or_create do |user|
        user.provider = auth.provider
@@ -18,7 +18,7 @@ class User < ApplicationRecord
        user.password = Devise.friendly_token[0,20]
      end
    end
-
+   # :nocov:
    def full_name
      "#{first_name} #{last_name}"
    end
