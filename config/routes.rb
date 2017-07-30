@@ -9,9 +9,11 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :projects, only: [:index, :show]
-
   resources :tags, only: [:index, :show]
+
+  resources :projects, only: [:index, :show] do
+    resources :events, shallow: true
+  end
 
   root to: 'pages#index'
 

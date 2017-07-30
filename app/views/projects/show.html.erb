@@ -16,11 +16,15 @@
   <strong>Repository:</strong> <%= @project.repository %>
 </div>
 
-<% if !@event.tag_list.empty? %>
+<% if !@project.tag_list.empty? %>
   <div>
     <strong>Categories:</strong> <%= safe_join(@project.tag_list.map { |tag| link_to(tag, tag_path(Tag.find_by(name: tag))) }, ", ".html_safe) %>
   </div>
 <% end %>
+
+<div>
+  <%= link_to 'Add a new event for this project', new_project_event_path(@project) %>
+</div>
 
 <% if !@project.events.empty? %>
   <div>
