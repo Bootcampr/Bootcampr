@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 
+
   def index
     @events = Event.all.order(:date, :time)
     @january = []
@@ -14,7 +15,7 @@ class EventsController < ApplicationController
     @october = []
     @november = []
     @december = []
-
+    # :nocov:
     @events.each do |e|
       case e.month
       when '01'
@@ -43,6 +44,7 @@ class EventsController < ApplicationController
         @december << e
       end
     end
+    # :nocov:
   end
 
   def new
@@ -64,11 +66,29 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      redirect_to @event
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    Event.find(params[:id]).destroy
+    redirect_to events_path
+  end
+
 
   private
 
   def event_params
-    params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list)
+    params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list, :project_id)
   end
 
 end
