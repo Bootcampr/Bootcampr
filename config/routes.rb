@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   resources :pages, only: [:index]
 
   resources :users
-
-  resources :tags, only: [:index, :show]
-
   resources :projects do
     resources :events, shallow: true
   end
+
+  resources :tags, only: [:index, :show]
 
   root to: 'pages#index'
 

@@ -3,6 +3,6 @@ FactoryGirl.define do
     title "MyString"
     summary "MyText"
     stack "MyText"
-    owner_id 1
+    owner factory: :user
   end
 end
