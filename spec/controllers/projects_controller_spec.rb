@@ -105,4 +105,52 @@ RSpec.describe ProjectsController, type: :controller do
     end
   end
 
+  p '******************************************************'
+
+  describe '#edit' do
+    before(:each) { get :edit, params: { id: project.id } }
+
+    it 'returns a status of 200' do
+      expect(response).to have_http_status 200
+    end
+
+    it 'assigns @project' do
+      expect(assigns[:project]).to eq project
+    end
+
+    it 'renders the users#show view' do
+      expect(response).to render_template :edit
+    end
+  end
+
+  describe '#update' do
+    let!(:new_attributes) { FactoryGirl.create(:project).attributes }
+
+    it 'returns a status of 200' do
+      expect(response).to have_http_status 200
+    end
+
+    it 'assigns @project' do
+      patch :update, params: { id: project.id, project: new_attributes }
+      expect(assigns[:project]).to eq project
+    end
+
+    it 'reassigns the project title' do
+      patch :update, params: { id: project.id, project: new_attributes }
+      project.reload
+      expect(project.title).to eq 'MyString'
+    end
+
+    it 'reassigns the project summary' do
+      patch :update, params: { id: project.id, project: new_attributes }
+      project.reload
+      expect(project.summary).to eq 'MyText'
+    end
+
+    it 'renders the project#show view' do
+      patch :update, params: { id: project.id, project: new_attributes }
+      expect(response.location).to include("/projects/#{project.id}")
+    end
+  end
+
 end
