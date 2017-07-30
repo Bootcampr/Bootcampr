@@ -15,11 +15,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     @user.tag_list = user_params[:tag_list]
-    if @user.save
-      redirect_to @user
-    else
-      render :edit
-    end
+    @user.save
+    flash[:success] = "Updated profile"
+    redirect_to @user
   end
 
   private
@@ -27,6 +25,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :bootcamp, :location, :summary, :tag_list)
   end
-
-
 end

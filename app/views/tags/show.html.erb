@@ -1,0 +1,31 @@
+<h2><%= @tag.name.capitalize %></h2>
+
+<% if !Event.tagged_with(@tag.name).empty? %>
+<div>
+  <h3>Related Events</h3>
+
+  <% Event.tagged_with(@tag.name).each do |event| %>
+  <%= link_to event.title, event %>
+  <% end %>
+</div>
+<% end %>
+
+<% if !Project.tagged_with(@tag.name).empty? %>
+  <div>
+    <h3>Related Projects</h3>
+
+    <% Project.tagged_with(@tag.name).each do |project| %>
+      <%= link_to project.title, project %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if !User.tagged_with(@tag.name).empty? %>
+  <div>
+    <h3>Interested Users</h3>
+
+    <% User.tagged_with(@tag.name).each do |user| %>
+      <%= link_to user.full_name, user %>
+    <% end %>
+  </div>
+<% end %>

@@ -25,7 +25,7 @@
 
 <% if !@project.tag_list.empty? %>
   <div>
-    <strong>Categories:</strong> <%= @event.tag_list.join(', ') %>
+    <strong>Categories:</strong> <%= safe_join(@project.tag_list.map { |tag| link_to(tag, tag_path(Tag.find_by(name: tag))) }, ", ".html_safe) %>
   </div>
 <% end %>
 
