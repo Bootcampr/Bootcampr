@@ -1,18 +1,18 @@
 <div class="container">
   <div class="grid-items">
     <div class="upcoming-events-list front-page-column grid-item">
-      <h2>Upcoming Events</h2>
+      <h2><%= link_to 'Upcoming Events', events_path%></h2>
       <% @upcoming_events.each do |event| %>
         <ul class='front-page-list'>
-          <li> <%= event.date %> <%= event.title %> </li>
+          <li> <%= event.date %> <%= link_to event.title, event %> </li>
         </ul>
       <% end %>
     </div>
     <div class="recent-projects-list front-page-column grid-item">
-      <h2>Recent Projects</h2>
+      <h2><%= link_to 'Recent Projects', projects_path%></h2>
       <% @recent_projects.each do |project| %>
         <ul class='front-page-list'>
-          <li> <%= project.title %> by <%= User.find(project.owner_id).email %></li>
+          <li> <%= link_to project.title, project %> by <%= User.find(project.owner_id).email %></li>
         </ul>
       <% end %>
     </div>
