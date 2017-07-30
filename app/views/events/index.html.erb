@@ -11,6 +11,7 @@
       <img src="http://lorempixel.com/400/200/abstract" alt="">
     </div>
     <div class='card-header'>
+      <%= event.date.strftime('%m/%d/%Y')%>
       <%= link_to event.title, event %>
     </div>
     <div class='card-copy'>
