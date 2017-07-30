@@ -12,7 +12,13 @@
       <h2><%= link_to 'Recent Projects', projects_path%></h2>
       <% @recent_projects.each do |project| %>
         <ul class='front-page-list'>
-          <li> <%= link_to project.title, project %> by <%= User.find(project.owner_id).email %></li>
+          <li> <%= link_to project.title, project %> by
+            <% user = User.find(project.owner_id) %>
+            <% if user.first_name && user.last_name %>
+              <%= link_to user.full_name, user %>
+            <% else %>
+              <%= link_to user.email, user %>
+            <% end %></li>
         </ul>
       <% end %>
     </div>
