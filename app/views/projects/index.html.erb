@@ -7,8 +7,9 @@
 <% end %>
 
 
+<% @projects.each do |project| %>
+<%= link_to project do  %>
 <div class='cards'>
-  <% @projects.each do |project| %>
   <div class='card'>
     <div class="card-image">
       <img src="http://lorempixel.com/400/200/abstract" alt="">
@@ -22,5 +23,6 @@
       </p>
     </div>
   </div>
+  <% end %>
   <% end %>
 </div>
