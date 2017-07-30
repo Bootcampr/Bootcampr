@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 
+
   def index
     @events = Event.all.order(:date, :time)
     @january = []
@@ -14,7 +15,7 @@ class EventsController < ApplicationController
     @october = []
     @november = []
     @december = []
-
+    # :nocov:
     @events.each do |e|
       case e.month
       when '01'
@@ -43,6 +44,7 @@ class EventsController < ApplicationController
         @december << e
       end
     end
+    # :nocov:
   end
 
   def new
