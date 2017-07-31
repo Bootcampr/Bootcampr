@@ -12,7 +12,9 @@
       } %>
   <% end %>
 
-
+  <div>
+    <%= link_to 'Add a new project for this event', new_event_project_path(@event) %>
+  </div>
 
   <% if !@event.tag_list.empty? %>
     <div>

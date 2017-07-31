@@ -7,7 +7,9 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @project = Project.new
+    if params[:project_id]
+      @project = Project.find([params[:project_id]])
+    end
   end
 
   def create
@@ -16,8 +18,9 @@ class EventsController < ApplicationController
     @event.owner = current_user
 
     if @event.save
-      if event_params[:project_id]
-        EventsProject.new(event_id: @event.id, project_id: params[:project_id])
+      if params[:project_id]
+        EventsProject.create(event_id: @event.id, project_id: params[:project_id].to_i)
+        p EventsProject.last
       end
       redirect_to @event
     else
@@ -27,8 +30,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    p params
-    p "*" * 1000
   end
 
   def edit
@@ -53,7 +54,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list, :project_id)
+    params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list)
   end
 
 end
