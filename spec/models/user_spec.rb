@@ -12,14 +12,16 @@ RSpec.describe User, type: :model do
   describe '#associations' do
     it { is_expected.to have_many :projects }
     it { is_expected.to have_many(:events) }
+    it { is_expected.to have_many(:attendances) }
+    it { is_expected.to have_many(:events_to_attend) }
 end
 
   describe '#full_name' do
     it 'returns the full name of a user' do
-    user.first_name = 'Mikey'
-    user.last_name = 'D'
-    expect(user.full_name).to eq 'Mikey D'
-  end
+      user.first_name = 'Mikey'
+      user.last_name = 'D'
+      expect(user.full_name).to eq 'Mikey D'
+    end
   end
 
 end
