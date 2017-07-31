@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="grid-items">
+    <div class="upcoming-events-list front-page-column grid-item">
+      <h2><%= link_to 'Upcoming Events', events_path%></h2>
+      <% @upcoming_events.each do |event| %>
+        <ul class='front-page-list'>
+          <li> <%= event.date %> <%= link_to event.title, event %> </li>
+        </ul>
+      <% end %>
+    </div>
+    <div class="recent-projects-list front-page-column grid-item">
+      <h2><%= link_to 'Recent Projects', projects_path%></h2>
+      <% @recent_projects.each do |project| %>
+        <ul class='front-page-list'>
+          <li> <%= link_to project.title, project %> by
+            <% user = User.find(project.owner_id) %>
+            <% if user.first_name && user.last_name %>
+              <%= link_to user.full_name, user %>
+            <% else %>
+              <%= link_to user.email, user %>
+            <% end %></li>
+        </ul>
+      <% end %>
+    </div>
+    <div class="hard-sell front-page-column grid-item">
+      <h2>Bootcamp Grads!</h2>
+      <p>
+        Building a community of web developers from non-traditional backgrouds as well as those looking to meet and work with peers.
+      </p>
+      <br />
+      <p>Become a bootcampr <%= link_to "today!", new_user_registration_path %></p>
+      <p>or, if you're already aweseome,</p>
+      <br />
+      <p><%= link_to "Log In!", new_user_session_path %></p>
+    </div>
+  </div>
+</div>
