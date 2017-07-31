@@ -19,12 +19,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.tag_list = project_params[:tag_list]
     @project.owner = current_user
-    # p params[:event_id]
     if @project.save
-      p params
-      p @project.id
-      p params[:event_id]
-      p "*" * 1000
       if params[:event_id]
         EventsProject.create(event_id: params[:event_id].to_i, project_id: @project.id)
         p EventsProject.last
