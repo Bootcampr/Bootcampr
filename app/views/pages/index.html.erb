@@ -1,13 +1,19 @@
-<div class="landing-page-container">
-  <div class="welcome-spiel col-1">
-    <h2>Who we is...</h2>
-    <p>Calling all Seattle Bootcamp Grads. This is a call to unite.</p>
-    <p>
-      We are a group of bootcamprs from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
-    </p>
-    <p>Get started today!</p>
+<% if !user_signed_in? %>
+  <div class="landing-page-container welcome">
+    <div class="welcome-spiel col-1">
+      <h2>Who we is...</h2>
+      <p>Calling all Seattle Bootcamp Grads. This is a call to unite.</p>
+      <p>
+        We are a group of bootcamprs from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
+      </p>
+      <p>Get started today!</p>
+    </div>
+    <div class="sign-up-form-container col-2">
+      <%= render 'shared/sign_up' %>
+    </div>
   </div>
-  <div class="sign-up-form-container col-2">
-    <%= render 'shared/sign_up' %>
-  </div>
-</div>
+<% elsif current_user.first_name == nil %>
+  <%= render template: 'users/edit' %>
+<% else %>
+  <%= render template: 'events/index' %>
+<% end %>
