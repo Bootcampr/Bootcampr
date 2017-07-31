@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  validates :title, :summary, :owner_id, presence: true
+  validates :title, :summary, :owner_id, :repository, presence: true
 
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
   has_many :events_projects
@@ -8,5 +8,5 @@ class Project < ApplicationRecord
   acts_as_taggable
   acts_as_taggable_on :categories
 
-  validates_format_of :repository, :with => /^(http|https):\/\/github.com(([0-9]{1,5})?\/.*)?$/, :multiline => true 
+  validates_format_of :repository, :with => /^(http|https):\/\/github.com(([0-9]{1,5})?\/.*)?$/, :multiline => true
 end
