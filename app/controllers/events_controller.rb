@@ -20,7 +20,9 @@ class EventsController < ApplicationController
       if params[:project_id]
         EventsProject.create(event_id: @event.id, project_id: params[:project_id].to_i)
       end
-      $twitter.update("Check out #{@event.title}, a new Bootcampr event: http://bootcampr.herokuapp.com/events/#{@event.id}")
+      if Rails.env != 'production'
+        $twitter.update("Check out #{@event.title}, a new Bootcampr event: http://bootcampr.herokuapp.com/events/#{@event.id}")
+      end
       redirect_to @event
     else
       render :new, status: 422
