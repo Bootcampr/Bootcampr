@@ -12,10 +12,16 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :projects do
-    resources :events, shallow: true
+  resources :events
+  resources :events do
+    resources :projects, only: [:new, :create]
   end
 
+  resources :projects
+  resources :projects do
+    resources :events, only: [:new, :create]
+  end
+  
   resources :tags, only: [:index, :show]
 
   root to: 'pages#index'
