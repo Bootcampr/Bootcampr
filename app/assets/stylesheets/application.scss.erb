@@ -23,15 +23,12 @@ html {
 
 body {
   min-height: 100%;
-  font-family: $helvetica;
-  // background-image: image-url("bg.jpg");
-  // background-repeat: no-repeat;
-  // background-position: 50% 0;
-  // -ms-background-size: cover;
-  // -o-background-size: cover;
-  // -moz-background-size: cover;
-  // -webkit-background-size: cover;
-  // background-size: cover;
+  font-family: courier;
+}
+
+.title {
+  font-family: courier;
+  font-size: 1.5em;
 }
 
  .edit-profile-form input, .edit-profile-form textarea {
@@ -216,12 +213,90 @@ a:visited {
 }
 
 .col-3 {
+  margin-left: 5px;
+  color: #000;
   display: inline;
-  width: 49%;
   float: left;
   padding: 30px 75px;
-  background-color: lightgray;
   border-radius: 10px;
-  opacity: 0.8;
-  margin: 2px;
+  width: 49%;
+  background-color: lightgray;
+  opacity: .75;
+  min-height: 20em;
+}
+
+.col-3 a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.col-3 h2 {
+  text-align: center;
+}
+
+
+// Table CSS
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr { border: 1px solid #ccc; }
+
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+	Label the data
+	*/
+	.event-td td:nth-of-type(1):before { content: "Date"; }
+	.event-td td:nth-of-type(2):before { content: "Name"; }
+	.project-td td:nth-of-type(1):before { content: "Project Name"; }
+	.project-td td:nth-of-type(2):before { content: "Creator"; }
 }

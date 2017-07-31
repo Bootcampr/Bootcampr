@@ -16,25 +16,39 @@
 <%= controller.redirect_to edit_user_path(current_user) %>
 <% else %>
 <div class="upcoming-events-list col-3">
+  <div class="bg"></div>
   <h2><%= link_to 'Upcoming Events', events_path%></h2>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+    </tr>
   <% @upcoming_events.each do |event| %>
-  <ul class='front-page-list'>
-    <li> <%= event.date %> <%= link_to event.title, event %> </li>
-  </ul>
+    <tr>
+      <td class='event-td'> <%= event.format_date %> </td>
+      <td class='event-td'> <%= link_to event.title, event %> </td>
+    </tr>
   <% end %>
+</table>
 </div>
 <div class="recent-projects-list col-3">
+  <div class="bg"></div>
   <h2><%= link_to 'Recent Projects', projects_path%></h2>
+  <table>
+    <tr>
+      <th>Project Name</th>
+      <th>Creator</th>
+    </tr>
   <% @recent_projects.each do |project| %>
-  <ul class='front-page-list'>
-    <li> <%= link_to project.title, project %> by
+    <tr>
+      <td class='project-td'><%= link_to project.title, project %></td>
       <% user = User.find(project.owner_id) %>
       <% if user.first_name && user.last_name %>
-      <%= link_to user.full_name, user %>
+        <td class='project-td'><%= link_to user.full_name, user %></td>
       <% else %>
-      <%= link_to user.email, user %>
-      <% end %></li>
-    </ul>
-    <% end %>
-  </div>
+        <td><%= link_to user.email, user %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
   <% end %>
