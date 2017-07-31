@@ -7,13 +7,21 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    if params[:project_id]
+      @project = Project.find([params[:project_id]])
+    end
   end
 
   def create
     @event = Event.new(event_params)
     @event.tag_list = event_params[:tag_list]
     @event.owner = current_user
+
     if @event.save
+      if params[:project_id]
+        EventsProject.create(event_id: @event.id, project_id: params[:project_id].to_i)
+        p EventsProject.last
+      end
       redirect_to @event
       $twitter.update("Check out this new event! #{}")
     else
@@ -47,7 +55,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list, :project_id)
+    params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list)
   end
 
 end

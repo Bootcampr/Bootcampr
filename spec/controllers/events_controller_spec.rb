@@ -124,30 +124,40 @@ end
 
 describe '#update' do
   let!(:new_attributes) { FactoryGirl.create(:event).attributes }
-  before(:each) do
-    patch :update, params: { id: test_event.id, event: new_attributes }
-    test_event.reload
-  end
 
   it 'returns a status of 302' do
+    patch :update, params: { id: test_event.id, event: new_attributes }
+    test_event.reload
     expect(response).to have_http_status 302
   end
 
   it 'assigns @event' do
+    patch :update, params: { id: test_event.id, event: new_attributes }
     expect(assigns[:event]).to eq test_event
   end
 
   it 'reassigns the events title' do
+    patch :update, params: { id: test_event.id, event: new_attributes }
+    test_event.reload
     expect(test_event.title).to eq 'MyString'
   end
 
   it 'reassigns the events summary' do
+    patch :update, params: { id: test_event.id, event: new_attributes }
+    test_event.reload
     expect(test_event.summary).to eq 'MyText'
   end
 
   it 'renders the event#show view' do
+    patch :update, params: { id: test_event.id, event: new_attributes }
     expect(response.location).to include("/events/#{test_event.id}")
   end
+
+  it 'renders the event#edit view if invalid' do
+    patch :update, params: { id: test_event.id, event: { title: '' } }
+    expect(response).to render_template(:edit)
+  end
+
 end
 
 describe '#destroy' do

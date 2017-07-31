@@ -44,7 +44,7 @@ gem 'twitter-text'
 gem 'bourbon'
 gem 'neat', '~> 1.8'
 gem 'refills'
-
+gem 'bitters'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
