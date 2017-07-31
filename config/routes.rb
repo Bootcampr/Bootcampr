@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", registrations: "registrations" }
 
   resources :events do
-    resources :projects, except: [:show]
+    resources :projects, only: [:new, :create]
     resources :attendances, only: [:create, :show]
   end
 
   resources :projects do
-    resources :events, except: [:show]
+    resources :events, only: [:new, :create]
   end
 
 
@@ -18,9 +18,6 @@ Rails.application.routes.draw do
   resources :pages, only: [:index]
 
   resources :users
-
-
-
   resources :tags, only: [:index, :show]
 
   root to: 'pages#index'
