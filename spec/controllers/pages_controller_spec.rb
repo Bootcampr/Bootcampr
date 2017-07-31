@@ -24,7 +24,7 @@ describe PagesController do
     end
 
     it 'assigns upcoming events as @upcoming_events' do
-      expect(assigns[:upcoming_events]).to eq(Event.order(date: :desc).limit(5))
+      expect(assigns[:upcoming_events]).to eq(Event.order(date: :asc).limit(5))
     end
 
     it 'only assigns 5 upcoming events to upcoming events' do
