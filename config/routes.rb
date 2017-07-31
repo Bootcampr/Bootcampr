@@ -4,18 +4,22 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", registrations: "registrations" }
 
+  resources :events do
+    resources :projects, except: [:show]
+    resources :attendances, only: [:create, :show]
+  end
+
+  resources :projects do
+    resources :events, except: [:show]
+  end
+
+
+
   resources :pages, only: [:index]
 
   resources :users
 
-  resources :projects do
-    resources :events, shallow: true
-  end
 
-  resources :events do
-    resources :projects, shallow: true
-    resources :attendances, only: [:create, :show]
-  end
 
   resources :tags, only: [:index, :show]
 
