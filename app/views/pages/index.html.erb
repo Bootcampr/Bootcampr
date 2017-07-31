@@ -1,37 +1,54 @@
-<div class="container">
-  <div class="grid-items">
-    <div class="upcoming-events-list front-page-column grid-item">
-      <h2><%= link_to 'Upcoming Events', events_path%></h2>
-      <% @upcoming_events.each do |event| %>
-        <ul class='front-page-list'>
-          <li> <%= event.date %> <%= link_to event.title, event %> </li>
-        </ul>
-      <% end %>
-    </div>
-    <div class="recent-projects-list front-page-column grid-item">
-      <h2><%= link_to 'Recent Projects', projects_path%></h2>
-      <% @recent_projects.each do |project| %>
-        <ul class='front-page-list'>
-          <li> <%= link_to project.title, project %> by
-            <% user = User.find(project.owner_id) %>
-            <% if user.first_name && user.last_name %>
-              <%= link_to user.full_name, user %>
-            <% else %>
-              <%= link_to user.email, user %>
-            <% end %></li>
-        </ul>
-      <% end %>
-    </div>
-    <div class="hard-sell front-page-column grid-item">
-      <h2>Bootcamp Grads!</h2>
-      <p>
-        Building a community of web developers from non-traditional backgrouds as well as those looking to meet and work with peers.
-      </p>
-      <br />
-      <p>Become a bootcampr <%= link_to "today!", new_user_registration_path %></p>
-      <p>or, if you're already aweseome,</p>
-      <br />
-      <p><%= link_to "Log In!", new_user_session_path %></p>
-    </div>
+<% if !user_signed_in? %>
+<div class="landing-page-container welcome">
+  <div class="welcome-spiel col-1">
+    <h2>Who we is...</h2>
+    <p>Calling all Seattle Bootcamp Grads. This is a call to unite.</p>
+    <p>
+      We are a group of bootcamprs from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
+    </p>
+    <p>Get started today!</p>
+  </div>
+  <div class="sign-up-form-container col-2">
+    <%= render 'shared/sign_up' %>
   </div>
 </div>
+<% elsif current_user.first_name == nil %>
+<%= controller.redirect_to edit_user_path(current_user) %>
+<% else %>
+<div class="upcoming-events-list col-3">
+  <div class="bg"></div>
+  <h2><%= link_to 'Upcoming Events', events_path%></h2>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+    </tr>
+  <% @upcoming_events.each do |event| %>
+    <tr>
+      <td class='event-td'> <%= event.format_date %> </td>
+      <td class='event-td'> <%= link_to event.title, event %> </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<div class="recent-projects-list col-3">
+  <div class="bg"></div>
+  <h2><%= link_to 'Recent Projects', projects_path%></h2>
+  <table>
+    <tr>
+      <th>Project Name</th>
+      <th>Creator</th>
+    </tr>
+  <% @recent_projects.each do |project| %>
+    <tr>
+      <td class='project-td'><%= link_to project.title, project %></td>
+      <% user = User.find(project.owner_id) %>
+      <% if user.first_name && user.last_name %>
+        <td class='project-td'><%= link_to user.full_name, user %></td>
+      <% else %>
+        <td><%= link_to user.email, user %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+  <% end %>

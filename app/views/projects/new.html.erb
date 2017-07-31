@@ -1,17 +1,3 @@
 <h1>New Project</h1><br>
 
-<div>
-  <% @project.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
-</div>
-
-<div>
-  <%= form_for @project do |f| %>
-    Title: <%= f.text_field :title %><br>
-    Summary: <%= f.text_field :summary %><br>
-    Stack: <%= f.text_field :stack %><br>
-    Repo: <%= f.text_field :repository %><br>
-    <%= f.submit %><br>
-  <% end %>
-</div>
+<%= render partial: 'form' %>

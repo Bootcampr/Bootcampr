@@ -36,7 +36,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#update' do
-    let!(:test_user) { User.create(email: 'asdf@asdf.com', password: 'hellossd') }
     let!(:new_attributes) { FactoryGirl.create(:user).attributes }
 
     it 'returns a status of 200' do
@@ -49,20 +48,20 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'reassigns the users first name' do
-      patch :update, params: { id: test_user.id, user: new_attributes }
-      test_user.reload
-      expect(test_user.first_name).to eq 'Barak'
+      patch :update, params: { id: user.id, user: new_attributes }
+      user.reload
+      expect(user.first_name).to eq 'Barak'
     end
 
     it 'reassigns the users last name' do
-      patch :update, params: { id: test_user.id, user: new_attributes }
-      test_user.reload
-      expect(test_user.last_name).to eq 'Obama'
+      patch :update, params: { id: user.id, user: new_attributes }
+      user.reload
+      expect(user.last_name).to eq 'Obama'
     end
 
     it 'renders the users#show view' do
-      patch :update, params: { id: test_user.id, user: new_attributes }
-      expect(response.location).to include("/users/#{test_user.id}")
+      patch :update, params: { id: user.id, user: new_attributes }
+      expect(response.location).to include("/users/#{user.id}")
     end
   end
 end
