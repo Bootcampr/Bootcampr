@@ -35,6 +35,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'acts-as-taggable-on', '~> 4.0'
+gem 'twitter'
 
 # scss
 gem 'bourbon'
