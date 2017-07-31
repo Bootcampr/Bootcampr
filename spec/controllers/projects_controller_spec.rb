@@ -105,8 +105,6 @@ RSpec.describe ProjectsController, type: :controller do
     end
   end
 
-  p '******************************************************'
-
   describe '#edit' do
     before(:each) { get :edit, params: { id: project.id } }
 
