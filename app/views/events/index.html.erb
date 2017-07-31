@@ -8,7 +8,7 @@
   <% @events.each do |event| %>
   <div class='card'>
     <div class="card-image">
-      <img src="<%= Faker::Placeholdit.image %>" alt="">
+      <%= image_tag("bricks") %>
     </div>
     <div class='card-header'>
       <%= link_to event.title, event %>
