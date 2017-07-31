@@ -9,7 +9,7 @@
       Date: <%= f.date_field :date %><br>
       Time: <%= f.time_field :time %><br>
       Location: <%= f.text_field :location %><br>
-      Summary: <%= f.text_field :summary %><br>
+      Summary: <%= f.text_area :summary %><br>
       Categories: <%= f.text_field :tag_list, value: '' %><br />
       <%= f.submit %><br>
     <% end %>
@@ -19,7 +19,7 @@
         Date: <%= f.date_field :date %><br>
         Time: <%= f.time_field :time %><br>
         Location: <%= f.text_field :location %><br>
-        Summary: <%= f.text_field :summary %><br>
+        Summary: <%= f.text_area :summary %><br>
         Categories: <%= f.text_field :tag_list, value: '' %><br />
         <%= f.submit %><br>
       <% end %>
