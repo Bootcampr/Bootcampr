@@ -4,18 +4,20 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", registrations: "registrations" }
 
-  resources :pages, only: [:index]
-
-  resources :users
-
   resources :events do
     resources :projects, only: [:new, :create]
+    resources :attendances, only: [:create, :show]
   end
 
   resources :projects do
     resources :events, only: [:new, :create]
   end
 
+
+
+  resources :pages, only: [:index]
+
+  resources :users
   resources :tags, only: [:index, :show]
 
   root to: 'pages#index'
