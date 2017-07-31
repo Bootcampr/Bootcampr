@@ -36,6 +36,10 @@ gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'acts-as-taggable-on', '~> 4.0'
 
+# Twitter
+gem 'twitter'
+gem 'twitter-text'
+
 # scss
 gem 'bourbon'
 gem 'neat', '~> 1.8'

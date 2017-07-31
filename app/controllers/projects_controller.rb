@@ -22,8 +22,8 @@ class ProjectsController < ApplicationController
     if @project.save
       if params[:event_id]
         EventsProject.create(event_id: params[:event_id].to_i, project_id: @project.id)
-        p EventsProject.last
       end
+      $twitter.update("Contribute to #{@project.title}, a project hosted by Bootcampr: http://bootcampr.herokuapp.com/projects/#{@project.id}")
       redirect_to @project
     else
       render :new, status: 422

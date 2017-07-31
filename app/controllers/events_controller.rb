@@ -16,12 +16,11 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.tag_list = event_params[:tag_list]
     @event.owner = current_user
-
     if @event.save
       if params[:project_id]
         EventsProject.create(event_id: @event.id, project_id: params[:project_id].to_i)
-        p EventsProject.last
       end
+      $twitter.update("Check out #{@event.title}, a new Bootcampr event: http://bootcampr.herokuapp.com/events/#{@event.id}")
       redirect_to @event
     else
       render :new, status: 422
