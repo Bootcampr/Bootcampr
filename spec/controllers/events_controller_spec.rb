@@ -39,6 +39,13 @@ describe EventsController do
     it 'renders the :new template' do
       expect(response).to render_template :new
     end
+
+    context 'nested route' do
+      it 'assigns a project if given a project_id' do
+        get :new, params: { project_id: FactoryGirl.create(:project).id }
+        expect(assigns[:project]).to all be_a Project
+      end
+    end
   end
 
   describe 'POST #create' do
