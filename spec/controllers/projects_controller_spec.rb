@@ -124,8 +124,9 @@ RSpec.describe ProjectsController, type: :controller do
   describe '#update' do
     let!(:new_attributes) { FactoryGirl.create(:project).attributes }
 
-    it 'returns a status of 200' do
-      expect(response).to have_http_status 200
+    it 'returns a status of 302' do
+      patch :update, params: { id: project.id, project: new_attributes }
+      expect(response).to have_http_status 302
     end
 
     it 'assigns @project' do
