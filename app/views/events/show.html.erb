@@ -36,16 +36,10 @@
   <div class="list-event-attendees">
     <h3>Attendees:</h3>
     <% @event.attendances.each do |attendance| %>
-    <% if defined? attendance %>
-        <% attendee = attendance.attendee %>
-      <% elsif defined? @attendance %>
-        <%= @attendance %>
-        <% attendee = @attendance.attendee %>
-      <% end %>
-      <% if attendee.id == session[:user_id] %>
-        <strong><%= attendee.first_name %> <%= attendee.last_name %></strong>
+      <% if attendance.attendee == current_user %>
+        <strong><%= attendance.attendee.full_name %></strong>
       <% else %>
-        <%= attendee.first_name %> <%= attendee.last_name %>
+        <%= link_to attendance.attendee.full_name, attendance.attendee %>
       <% end %>
       <br />
     <% end %>

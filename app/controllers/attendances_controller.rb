@@ -1,4 +1,4 @@
-class AttendanceController < ApplicationController
+class AttendancesController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @attendee = User.find(current_user.id)
@@ -7,8 +7,8 @@ class AttendanceController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to event_path(@event) }
-      format.json
+      format.js
     end
-    
+
   end
 end
