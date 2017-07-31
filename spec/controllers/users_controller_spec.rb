@@ -39,33 +39,29 @@ RSpec.describe UsersController, type: :controller do
     let!(:test_user) { User.create(email: 'asdf@asdf.com', password: 'hellossd') }
     let!(:new_attributes) { FactoryGirl.create(:user).attributes }
 
-    before(:each) do
-      patch :update, params: { id: test_user.id, user: new_attributes }
-    end
-
     it 'returns a status of 200' do
       expect(response).to have_http_status 200
     end
 
     it 'assigns @users' do
-      # patch :update, params: { id: user.id, user: new_attributes }
+      patch :update, params: { id: user.id, user: new_attributes }
       expect(assigns[:user]).to eq user
     end
 
     it 'reassigns the users first name' do
-      # patch :update, params: { id: test_user.id, user: new_attributes }
+      patch :update, params: { id: test_user.id, user: new_attributes }
       test_user.reload
       expect(test_user.first_name).to eq 'Barak'
     end
 
     it 'reassigns the users last name' do
-      # patch :update, params: { id: test_user.id, user: new_attributes }
+      patch :update, params: { id: test_user.id, user: new_attributes }
       test_user.reload
       expect(test_user.last_name).to eq 'Obama'
     end
 
     it 'renders the users#show view' do
-      # patch :update, params: { id: test_user.id, user: new_attributes }
+      patch :update, params: { id: test_user.id, user: new_attributes }
       expect(response.location).to include("/users/#{test_user.id}")
     end
   end
