@@ -8,12 +8,14 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :projects do
-    resources :events, shallow: true
+  resources :events
+  resources :events do
+    resources :projects, only: [:new, :create]
   end
 
-  resources :events do
-    resources :projects, shallow: true
+  resources :projects
+  resources :projects do
+    resources :events, only: [:new, :create]
   end
 
   resources :tags, only: [:index, :show]
