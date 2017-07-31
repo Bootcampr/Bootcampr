@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     @event.owner = current_user
     if @event.save
       redirect_to @event
+      $twitter.update("Check out this new event! #{}")
     else
       render :new, status: 422
     end
