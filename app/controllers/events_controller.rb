@@ -7,13 +7,18 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @project = Project.new
   end
 
   def create
     @event = Event.new(event_params)
     @event.tag_list = event_params[:tag_list]
     @event.owner = current_user
+
     if @event.save
+      if event_params[:project_id]
+        EventsProject.new(event_id: @event.id, project_id: params[:project_id])
+      end
       redirect_to @event
     else
       render :new, status: 422
@@ -22,6 +27,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    p params
+    p "*" * 1000
   end
 
   def edit
