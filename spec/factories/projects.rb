@@ -3,6 +3,7 @@ FactoryGirl.define do
     title "MyString"
     summary "MyText"
     stack "MyText"
+    repository "https://github.com"
     owner factory: :user
   end
 end
