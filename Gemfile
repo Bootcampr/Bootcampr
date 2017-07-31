@@ -40,7 +40,7 @@ gem 'acts-as-taggable-on', '~> 4.0'
 gem 'bourbon'
 gem 'neat', '~> 1.8'
 gem 'refills'
-
+gem 'bitters'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
