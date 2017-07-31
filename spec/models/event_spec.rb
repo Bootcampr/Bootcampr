@@ -25,7 +25,9 @@ RSpec.describe Event, type: :model do
 
   context 'associations' do
     it { is_expected.to belong_to(:owner) }
-    # it { is_expected.to have_many :events_projects }
-    # it { is_expected.to have_many :projects }
+    it { is_expected.to have_many :events_projects }
+    it { is_expected.to have_many :projects }
+    it { is_expected.to have_many :attendances }
+    it { is_expected.to have_many :attendees }
   end
 end

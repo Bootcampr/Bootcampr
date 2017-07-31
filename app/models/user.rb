@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :projects, foreign_key: 'owner_id'
+  has_many :events
+  has_many :attendances, as: :attendee
+  has_many :events_to_attend, through: :attendances, class_name: 'Event'
   acts_as_taggable
   acts_as_taggable_on :interests
 
