@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20170731162957) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.text     "summary",    null: false
+    t.string   "title"
+    t.text     "summary"
     t.text     "stack"
-    t.integer  "owner_id",   null: false
+    t.integer  "owner_id"
     t.string   "repository"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
