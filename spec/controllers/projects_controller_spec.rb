@@ -54,6 +54,12 @@ RSpec.describe ProjectsController, type: :controller do
       expect(response).to render_template :new
     end
 
+    context 'nested route' do
+      it 'assigns an event if given a event_id' do
+        get :new, params: { event_id: FactoryGirl.create(:event).id }
+        expect(assigns[:event]).to all be_a Event
+      end
+    end
   end
 
 

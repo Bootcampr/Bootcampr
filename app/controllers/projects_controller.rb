@@ -23,7 +23,9 @@ class ProjectsController < ApplicationController
       if params[:event_id]
         EventsProject.create(event_id: params[:event_id].to_i, project_id: @project.id)
       end
-      $twitter.update("Contribute to #{@project.title}, a project hosted by Bootcampr: http://bootcampr.herokuapp.com/projects/#{@project.id}")
+      if Rails.env == 'production'
+        $twitter.update("Contribute to #{@project.title}, a project hosted by Bootcampr: http://bootcampr.herokuapp.com/projects/#{@project.id}")
+      end
       redirect_to @project
     else
       render :new, status: 422

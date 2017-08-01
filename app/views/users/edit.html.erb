@@ -27,12 +27,24 @@
        <%= f.text_field :bootcamp%>
 
        <%= f.label :location %>
-       <%= f.text_field :location%>
+       <%= f.text_field :location %>
+
+       <%= f.label 'Github Username' %>
+       <%= f.text_field :github %>
+
+       <%= f.label 'LinkedIn Username' %>
+       <%= f.text_field :linkedin %>
+
+       <%= f.label 'Twitter Handle' %>
+       <%= f.text_field :twitter %>
+
+       <%= f.label 'Personal Website' %>
+       <%= f.text_field :website %>
 
        <%= f.label :summary %>
        <%= f.text_area :summary %>
 
-       <%= f.label :interests %>
+       <%= f.label 'Interests (comma-separated)' %>
        <%= f.text_field :tag_list, value: @user.tag_list.join(', ') %>
 
        <%= f.submit %>
