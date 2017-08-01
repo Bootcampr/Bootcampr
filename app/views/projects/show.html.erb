@@ -51,3 +51,4 @@
   <%= link_to 'Edit', edit_project_path %><br>
   <%= link_to 'Scrap this project', project_path(@project), method: :delete, data: { confirm: "Are you sure you'd like to delete this project?" } %>
 <% end %>
+<%= button_to 'Back', url_for(:back), :method => :get %>
