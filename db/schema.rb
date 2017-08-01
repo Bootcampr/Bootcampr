@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20170801161817) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.text     "summary"
+    t.string   "title",      null: false
+    t.text     "summary",    null: false
     t.text     "stack"
-    t.integer  "owner_id"
+    t.integer  "owner_id",   null: false
     t.string   "repository"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -120,6 +120,4 @@ ActiveRecord::Schema.define(version: 20170801161817) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "collaborators", "projects"
-  add_foreign_key "collaborators", "users"
 end
