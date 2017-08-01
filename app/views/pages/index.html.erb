@@ -25,10 +25,12 @@
       <th>Name</th>
     </tr>
   <% @upcoming_events.each do |event| %>
-    <tr>
-      <td class='event-td'> <%= event.format_date %> </td>
-      <td class='event-td'> <%= link_to event.title, event %> </td>
-    </tr>
+    <% if event.date >= Date.today %>
+      <tr>
+        <td class='event-td'> <%= event.format_date %> </td>
+        <td class='event-td'> <%= link_to event.title, event %> </td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
 </div>
