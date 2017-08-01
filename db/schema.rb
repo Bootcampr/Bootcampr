@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801053908) do
+ActiveRecord::Schema.define(version: 20170801161817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,9 +101,9 @@ ActiveRecord::Schema.define(version: 20170801053908) do
     t.string   "bootcamp"
     t.string   "location"
     t.text     "summary"
-    t.string   "github"
-    t.string   "linkedin"
-    t.string   "twitter"
+    t.string   "github_handle"
+    t.string   "linkedin_handle"
+    t.string   "twitter_handle"
     t.string   "website"
     t.string   "image_uid"
     t.string   "image_name"
