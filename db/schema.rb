@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801154123) do
+ActiveRecord::Schema.define(version: 20170801161817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(version: 20170801154123) do
     t.datetime "updated_at",      null: false
     t.index ["collaborator_id"], name: "index_collaborations_on_collaborator_id", using: :btree
     t.index ["project_id"], name: "index_collaborations_on_project_id", using: :btree
-  end
-
-  create_table "collaborators", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_collaborators_on_project_id", using: :btree
-    t.index ["user_id"], name: "index_collaborators_on_user_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -115,16 +106,12 @@ ActiveRecord::Schema.define(version: 20170801154123) do
     t.string   "bootcamp"
     t.string   "location"
     t.text     "summary"
-    t.string   "github"
-    t.string   "linkedin"
-    t.string   "twitter"
+    t.string   "github_handle"
+    t.string   "linkedin_handle"
+    t.string   "twitter_handle"
     t.string   "website"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "collaborations", "collaborators"
-  add_foreign_key "collaborations", "projects"
-  add_foreign_key "collaborators", "projects"
-  add_foreign_key "collaborators", "users"
 end
