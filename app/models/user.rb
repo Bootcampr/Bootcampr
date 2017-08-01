@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :attendances, as: :attendee
   has_many :events_to_attend, through: :attendances, class_name: 'Event'
+  has_many :collaborators
   acts_as_taggable
   acts_as_taggable_on :interests
 

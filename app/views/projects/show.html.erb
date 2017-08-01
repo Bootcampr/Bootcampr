@@ -33,7 +33,27 @@
   <%= link_to 'Add a new event for this project', new_project_event_path(@project) %>
 </div>
 
+<div class="list-project-collaborators">
+  <h3>Collaborators:</h3>
+  <% @project.collaborators.each do |person| %>
+    <% if person == current_user %>
+      <strong><%= person.full_name %></strong>
+    <% else %>
+      <%= link_to person.full_name, person %>
+    <% end %>
+    <br />
+  <% end %>
+</div>
 
+<div class="collaborator-button">
+  <% if current_user == @project.owner %>
+  <% @collaborator = Collaborator.new %>
+    <%= form_for([@project, @collaborator], remote: true) do |f| %>
+      Collaborator Email: <%= f.email_field :user %>
+      <%= f.submit 'Add collaborators' %>
+    <% end %>
+  <% end %>
+</div>
 
 <% if !@project.events.empty? %>
   <div>
