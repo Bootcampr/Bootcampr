@@ -1,10 +1,13 @@
 class User < ApplicationRecord
+  dragonfly_accessor :image
+
   has_many :projects, foreign_key: 'owner_id'
-  has_many :events
   has_many :attendances, as: :attendee
+  has_many :events, foreign_key: 'owner_id'
   has_many :events_to_attend, through: :attendances, class_name: 'Event'
   has_many :collaborations, as: :collaborator
   has_many :collab_projects, through: :collaborations, class_name: 'Project'
+
   acts_as_taggable
   acts_as_taggable_on :interests
 
@@ -13,7 +16,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:github]
 
-  has_many :events, foreign_key: 'owner_id'
   # :nocov:
    def self.from_omniauth(auth)
      where(provider: auth.provider, uid: auth.uid.to_s).first_or_create do |user|

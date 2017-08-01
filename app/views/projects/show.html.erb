@@ -1,8 +1,8 @@
-<div><h2><%= @project.title %></h2></div>
+<h2><%= @project.title %></h2>
 
-<p>
-  <%= @project.summary %>
-</p>
+<a href="<%= @project.repository %>"><%= image_tag @project.image.thumb('400x200#').url if @project.image_stored? %></a>
+
+<p><%= @project.summary %></p>
 
 <div>
   <strong>Project Owner:</strong>
@@ -20,7 +20,7 @@
 </div>
 
 <div>
-  <strong>Repository:</strong> <%= @project.repository %>
+  <strong>Repository:</strong> <a href="<%= @project.repository %>"><%= @project.repository %></a>  
 </div>
 
 <% if !@project.tag_list.empty? %>
