@@ -38,7 +38,7 @@
 <div class="list-project-collaborators">
   <h3>Collaborators:</h3>
   <% @project.collaborators.each do |collaborator| %>
-      <%= link_to collaborator.full_name, @project %>
+      <%= link_to collaborator.full_name, collaborator %>
     <br />
   <% end %>
 </div>
