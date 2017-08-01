@@ -1,11 +1,9 @@
 class CollaboratorsController < ApplicationController
   def create
-    @project = Project.find(params[:project_id])
-    @collaborator = User.find_by(email: params[:user][:email])
+    @project = Project.find(params[:event_id])
+    @collaborator = User.find(current_user.id)
     @project.collaborators << @collaborator
-    p '************************************************'
-    p @project
-    p@collaborator
+
     respond_to do |format|
       format.html { redirect_to project_path(@project) }
       format.js

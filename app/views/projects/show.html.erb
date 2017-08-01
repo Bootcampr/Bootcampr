@@ -46,11 +46,10 @@
 </div>
 
 <div class="collaborator-button">
-  <% if current_user == @project.owner %>
+  <% if user_signed_in? %>
   <% @collaborator = Collaborator.new %>
     <%= form_for([@project, @collaborator], remote: true) do |f| %>
-      Collaborator Email: <%= f.email_field :user %>
-      <%= f.submit 'Add collaborators' %>
+      <%= f.submit 'Become a collaborator on this project' %>
     <% end %>
   <% end %>
 </div>
