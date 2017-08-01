@@ -49,8 +49,10 @@
   </div>
   <h2>Affiliated Events:</h2>
   <div class="user-profile-events user-profile">
-    <% @user.events.each do |event| %>
-    <p><%= link_to "#{event.title}", event_path(event) %></p>
+    <% @events.each do |event| %>
+      <% if event.date >= Date.today %>
+      <p><%= link_to "#{event.title}", event %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
