@@ -148,10 +148,6 @@ a:visited {
   height: 350px;
 }
 
-.landing-page-container {
-  margin-top: 100px;
-}
-
 .col-2 {
   float: left;
   display: inline;
@@ -329,3 +325,25 @@ img {
 .sign-up-github {
   margin-top: 10px;
 }
+
+$hero-height: 75vh;
+
+.hero-section {
+  background: image-url("hero.jpg") 50% no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: $hero-height;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .hero-section-text {
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+  }
+}
+
+// .header-container {
+//   position: fixed;
+// }
