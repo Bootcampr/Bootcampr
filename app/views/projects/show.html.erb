@@ -35,6 +35,26 @@
 
 
 
+<div class="list-project-collaborators">
+  <h3>Collaborators:</h3>
+  <% @project.collaborators.each do |collaborator| %>
+      <%= link_to attendance.attendee.full_name, attendance.attendee %>
+    <br />
+  <% end %>
+</div>
+
+<div class="collab-button">
+  <% if user_signed_in? && !@project.collaborators.include?(current_user) %>
+    <% @collaboration = Collaboration.new %>
+    <%= form_for([@project, @collaboration], remote: true) do |f| %>
+      <%= f.submit 'Become a collaborator on this project' %>
+    <% end %>
+  <% end %>
+
+
+
+
+
 <% if !@project.events.empty? %>
   <div>
     <h3>Upcoming Events</h3>
