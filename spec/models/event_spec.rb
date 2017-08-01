@@ -9,6 +9,10 @@ RSpec.describe Event, type: :model do
     it { is_expected.to validate_presence_of(:time) }
     it { is_expected.to validate_presence_of(:location) }
     it { is_expected.to validate_presence_of(:summary) }
+    it 'validates that date cannot be in the past' do
+      expect(test_event.errors.full_messages).to include "Date has to be in the future. We're still working on a time-traveling API."
+    end
+
   end
 
   it '#format_time' do
