@@ -1,26 +1,22 @@
-<h2 class='user-profile-name user-profile'><%= @user.full_name %></h2>
+<h2 class='user-profile-name user-profile'><%= @user.full_name %>'s Profile</h2>
+
+<div class="profile-picture-container">
+  <%= image_tag @user.image.thumb('400x200#').url if @user.image_stored? %>
+</div>
 
 <div class='user-profile-bootcamp user-profile'>
-  <p>Bootcamp: </p>
-  <p class="user-details"><%= @user.bootcamp %></p>
+  <p>Bootcamp: <%= @user.bootcamp %></p>
 </div>
 <div class='user-profile-location user-profile'>
-  <p>Location:</p>
-  <p class="user-details"><%= @user.location %></p>
+  <p>Location: <%= @user.location %></p>
 </div>
-
 <div class='user-profile-summary user-profile'>
-  <p>Summary:</p>
-  <p class="user-details"><%= @user.summary %></p>
+  <p>Summary: <%= @user.summary %></p>
 </div>
-
 <div class='user-profile-projects user-profile'>
-  <p>Projects:</p>
-  <p class="user-details">
     <% @user.projects.each do |project| %>
-      <%= link_to "#{project.title}", project_path(project) %>
+    <p><%= link_to "#{project.title}", project_path(project) %></p>
     <% end %>
-  </p>
 </div>
 
 <div class='user-project-links user-profile'>
