@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801161817) do
+ActiveRecord::Schema.define(version: 20170801185413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 20170801161817) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.text     "summary"
+    t.string   "title",      null: false
+    t.text     "summary",    null: false
     t.text     "stack"
-    t.integer  "owner_id"
+    t.integer  "owner_id",   null: false
     t.string   "repository"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -125,10 +125,12 @@ ActiveRecord::Schema.define(version: 20170801161817) do
     t.string   "website"
     t.string   "image_uid"
     t.string   "image_name"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "collaborators", "projects"
-  add_foreign_key "collaborators", "users"
 end
