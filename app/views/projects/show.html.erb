@@ -29,10 +29,6 @@
   </div>
 <% end %>
 
-<div>
-  <%= link_to 'Add a new event for this project', new_project_event_path(@project) %>
-</div>
-
 <div class="list-project-collaborators">
   <h3>Collaborators:</h3>
   <% @project.collaborators.each do |person| %>
@@ -48,7 +44,7 @@
 <div class="collaborator-button">
   <% if user_signed_in? %>
   <% @collaborator = Collaborator.new %>
-    <%= form_for([@project, @collaborator], remote: true) do |f| %>
+    <%= form_for(@collaborator, url: project_collaborator_path, remote: true) do |f| %>
       <%= f.submit 'Become a collaborator on this project' %>
     <% end %>
   <% end %>
@@ -65,6 +61,12 @@
     <% end %>
   </div>
 <% end %>
+
+<div class='add-project-event'>
+  <% if current_user == @project.owner || @project.collaborators.include?(current_user) %>
+    <%= link_to 'Add a new event for this project', new_project_event_path(@project) %>
+  <% end %>
+</div>
 
 <% if current_user == @project.owner %>
   <%= link_to 'Edit', edit_project_path %><br>

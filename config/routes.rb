@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :events, only: [:new, :create]
-    resources :collaborators, only: [:create]
+    resources :collaborators, only: [:create, :show]
   end
 
 
