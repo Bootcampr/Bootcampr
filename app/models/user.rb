@@ -16,8 +16,6 @@ class User < ApplicationRecord
 
   # :nocov:
    def self.from_omniauth(auth)
-     p auth.info.image
-     p "*" * 1000
      where(provider: auth.provider, uid: auth.uid.to_s).first_or_create do |user|
        user.provider = auth.provider
        user.uid = auth.uid
