@@ -16,11 +16,15 @@ class User < ApplicationRecord
 
   # :nocov:
    def self.from_omniauth(auth)
+     p auth.info.image
+     p "*" * 1000
      where(provider: auth.provider, uid: auth.uid.to_s).first_or_create do |user|
        user.provider = auth.provider
        user.uid = auth.uid
        user.email = auth.info.email
        user.password = Devise.friendly_token[0,20]
+       user.image_url = auth.info.image
+       user.save
      end
    end
    # :nocov:

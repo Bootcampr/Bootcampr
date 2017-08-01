@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170801161817) do
     t.index ["event_id"], name: "index_attendances_on_event_id", using: :btree
   end
 
+  create_table "collaborations", force: :cascade do |t|
+    t.integer  "collaborator_id"
+    t.integer  "project_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["collaborator_id"], name: "index_collaborations_on_collaborator_id", using: :btree
+    t.index ["project_id"], name: "index_collaborations_on_project_id", using: :btree
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title",      null: false
     t.date     "date",       null: false
@@ -45,10 +54,10 @@ ActiveRecord::Schema.define(version: 20170801161817) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.text     "summary",    null: false
+    t.string   "title"
+    t.text     "summary"
     t.text     "stack"
-    t.integer  "owner_id",   null: false
+    t.integer  "owner_id"
     t.string   "repository"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
