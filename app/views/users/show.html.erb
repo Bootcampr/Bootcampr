@@ -1,4 +1,3 @@
-
 <div class="user-picture-and-links user-col">
   <h2 class='user-header'><%= @user.full_name %>'s Profile</h2>
   <div class="profile-picture-container">
@@ -14,6 +13,7 @@
     <span class='user-link user-profile'><%= link_to image_tag('linkedin_icon.png', width: 50), "https://linkedin.com/in/#{@user.linkedin_handle}" if @user.linkedin_handle != '' %></span>
     <span class='user-link user-profile'><%= link_to image_tag('website_icon.jpg', width: 50), @user.website if @user.website != '' %></span>
   </div>
+
 </div>
 
 <div class="user-details user-col middle-col">
