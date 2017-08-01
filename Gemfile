@@ -64,6 +64,7 @@ group :development, :test do
   gem 'simplecov', :require => false, :group => :test
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'capybara-rails'
+  gem 'letter_opener'
 end
 
 group :development do
