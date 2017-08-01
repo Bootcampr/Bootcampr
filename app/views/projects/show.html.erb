@@ -20,7 +20,7 @@
 </div>
 
 <div>
-  <strong>Repository:</strong> <a href="<%= @project.repository %>"><%= @project.repository %></a>  
+  <strong>Repository:</strong> <a href="<%= @project.repository %>"><%= @project.repository %></a>
 </div>
 
 <% if !@project.tag_list.empty? %>
@@ -38,7 +38,7 @@
 <div class="list-project-collaborators">
   <h3>Collaborators:</h3>
   <% @project.collaborators.each do |collaborator| %>
-      <%= link_to attendance.attendee.full_name, attendance.attendee %>
+      <%= link_to collaborator.full_name, @project %>
     <br />
   <% end %>
 </div>
