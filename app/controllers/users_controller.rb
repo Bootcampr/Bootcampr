@@ -2,6 +2,7 @@ require 'rest-client'
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @events = @user.events.order(:date, :time)
   end
 
   def edit
