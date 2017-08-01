@@ -8,7 +8,11 @@
   <% @events.each do |event| %>
   <div class='card'>
     <div class="card-image">
-      <%= image_tag("bricks") %>
+      <% if event.image_stored? %>
+        <%= image_tag event.image.thumb('300x300').url if event.image_stored? %>
+      <% else %>
+        <img src="http://lorempixel.com/400/200/abstract" alt="This would be a lot cooler if you uploaded a picture">
+      <% end %>
     </div>
     <div class='card-header'>
       <%= link_to event.title, event %>

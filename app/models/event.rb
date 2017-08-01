@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+    dragonfly_accessor :image
+    
     validates_presence_of :title, :date, :time, :location, :summary, :owner_id
 
     belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'

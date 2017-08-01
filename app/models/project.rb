@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  dragonfly_accessor :image
+  
   validates :title, :summary, :owner_id, :repository, presence: true
 
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
