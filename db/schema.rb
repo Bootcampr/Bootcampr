@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170801161817) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "owner_id"
+    t.string   "image_uid"
+    t.string   "image_name"
   end
 
   create_table "events_projects", force: :cascade do |t|
@@ -43,13 +45,15 @@ ActiveRecord::Schema.define(version: 20170801161817) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.text     "summary"
+    t.string   "title",      null: false
+    t.text     "summary",    null: false
     t.text     "stack"
-    t.integer  "owner_id"
+    t.integer  "owner_id",   null: false
     t.string   "repository"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image_uid"
+    t.string   "image_name"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -101,6 +105,8 @@ ActiveRecord::Schema.define(version: 20170801161817) do
     t.string   "linkedin_handle"
     t.string   "twitter_handle"
     t.string   "website"
+    t.string   "image_uid"
+    t.string   "image_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

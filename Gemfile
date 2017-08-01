@@ -45,6 +45,10 @@ gem 'bourbon'
 gem 'neat', '~> 1.8'
 gem 'refills'
 gem 'bitters'
+
+# Dragonfly
+gem 'dragonfly', '~> 1.1.3'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
