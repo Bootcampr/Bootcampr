@@ -4,7 +4,7 @@ Are you looking for something to do this week? We thought you might like some id
 
 Recently-posted projects:
 
-<% possible_projects = Project.tagged_with(user.tag_list, on: :tags, any: true) %>
+<% possible_projects = Project.tagged_with(@user.tag_list, on: :tags, any: true) %>
 
 <% possible_projects = possible_projects.sort_by { |project| project.updated_at } %>
 
@@ -14,7 +14,7 @@ Recently-posted projects:
 
 Recently-posted events:
 
-<% possible_events = Event.tagged_with(user.tag_list, on: :tags, any: true) %>
+<% possible_events = Event.tagged_with(@user.tag_list, on: :tags, any: true) %>
 
 <% possible_events = possible_events.sort_by { |event| event.updated_at } %>
 
@@ -22,4 +22,4 @@ Recently-posted events:
   <%= project.title %>
 <% end %>
 
-Want more ideas? <% link_to 'Update your interests!', edit_user_path %>
+Want more ideas? <% link_to 'Update your interests!', edit_user_url(@user) %>
