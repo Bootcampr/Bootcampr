@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @projects = Project.all
   end
@@ -19,6 +21,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.tag_list = project_params[:tag_list]
     @project.owner = current_user
+
     if @project.save
       if params[:event_id]
         EventsProject.create(event_id: params[:event_id].to_i, project_id: @project.id)
