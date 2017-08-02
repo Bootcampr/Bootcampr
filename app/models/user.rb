@@ -16,7 +16,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :omniauth_providers => [:github]
 
-  # :nocov:
+   # :nocov:
+   def soft_delete
+     update_attribute(:deleted_at, Time.current)
+   end
+
+   # ensure user account is active
+   def active_for_authentication?
+     super && !deleted_at
+   end
+
+   # provide a custom message for a deleted account
+   def inactive_message
+   	!deleted_at ? super : :deleted_account
+   end
+
    def self.from_omniauth(auth)
      where(provider: auth.provider, uid: auth.uid.to_s).first_or_create do |user|
        user.provider = auth.provider
