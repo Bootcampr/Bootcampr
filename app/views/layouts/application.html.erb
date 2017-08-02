@@ -5,16 +5,29 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag    'landing-page', media: 'all' if controller_name == 'pages' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class='welcome'>
-    <%= render 'shared/header' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="content-container">
-      <%= yield %>
+  <body>
+    <div class="header-container">
+      <%= render 'shared/header' %>
+      <div class="header-spacer"></div>
     </div>
+    <% p request.env['PATH_INFO'] == '/' %>
+    <% if request.env['PATH_INFO'] == '/' %>
+      <%= render 'shared/hero' %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+    <% else %>
+      <div class="header-spacer"></div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
   </html>
