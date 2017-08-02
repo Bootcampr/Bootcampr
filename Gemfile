@@ -64,6 +64,7 @@ group :development, :test do
   gem 'simplecov', :require => false, :group => :test
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'capybara-rails'
+  gem 'letter_opener'
 end
 
 group :development do
@@ -74,7 +75,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
-  
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
