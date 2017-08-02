@@ -3,5 +3,7 @@
   <p>
     We are a group of bootcamprs from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
   </p>
-  <p>Get started today!</p>
+  <% if !user_signed_in? %>
+    <p> <%= link_to 'Get started today!', new_user_registration_path %> </p>
+  <% end %>
 </div>
