@@ -1,68 +1,11 @@
 <% if !user_signed_in? %>
 <div class="landing-page-container welcome">
-  <div class="welcome-spiel col-1">
-    <h2>Who we is...</h2>
-    <p>Calling all Seattle Bootcamp Grads. This is a call to unite.</p>
-    <p>
-      We are a group of bootcamprs from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
-    </p>
-    <p>Get started today!</p>
-  </div>
-  <div class="sign-up-form-container col-2">
-    <%= render 'shared/sign_up' %>
-  </div>
+  <%= render 'shared/welcome_message' %>
+  <%= render 'shared/sign_up' %>
 </div>
-<% elsif current_user.first_name == nil %>
-<%= controller.redirect_to edit_user_path(current_user) %>
 <% else %>
-<div class="upcoming-events-list col-3">
-  <div class="bg"></div>
-  <h2><%= link_to 'Upcoming Events', events_path%></h2>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Name</th>
-    </tr>
-  <% @upcoming_events.each do |event| %>
-    <% if event.date >= Date.today %>
-      <tr>
-        <td class='event-td'> <%= event.format_date %> </td>
-        <td class='event-td'> <%= link_to event.title, event %> </td>
-      </tr>
-    <% end %>
-  <% end %>
-</table>
-</div>
-<div class="recent-projects-list col-3">
-  <h2><%= link_to 'Recent Projects', projects_path%></h2>
-  <table>
-    <tr>
-      <th>Project Name</th>
-      <th>Creator</th>
-    </tr>
-  <% @recent_projects.each do |project| %>
-    <tr>
-      <td class='project-td'><%= link_to project.title, project %></td>
-      <% user = User.find(project.owner_id) %>
-      <% if user.first_name && user.last_name %>
-        <td class='project-td'><%= link_to user.full_name, user %></td>
-      <% else %>
-        <td><%= link_to user.email, user %></td>
-      <% end %>
-    </tr>
-  <% end %>
-  </table>
-</div>
-<div class="welcome-spiel col-1">
-  <h2>Who we is...</h2>
-  <p>Calling all Bootcamp Grads. This is a call to unite.</p>
-  <p>
-    We are a group of bootcamprs from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
-  </p>
-  <p>Get started today!</p>
-</div>
-<div class="sign-up-form-container col-2">
-  <div class="new-event-and-project ">
+  <%= render 'shared/welcome_message' %>
+  <div class="new-stuff col-2">
     <h2>Build something great</h2>
     <form class="new-event-button" action="/events/new" method="get">
       <input type="submit" value="Create an Event">
@@ -71,5 +14,4 @@
       <input type="submit" value="Create a Project">
     </form>
   </div>
-</div>
-  <% end %>
+<% end %>
