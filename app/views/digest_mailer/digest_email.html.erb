@@ -10,7 +10,7 @@
   <% possible_projects = Project.tagged_with(@user.tag_list, on: :tags, any: true) %>
   <% possible_projects = possible_projects.sort_by { |project| project.updated_at } %>
   <% possible_projects.slice(0, 5).each do |project| %>
-    <br /><%= project.title %>
+    <br /><%= link_to project.title, project %>
   <% end %>
   <br />
   <br />
@@ -21,8 +21,8 @@
 
   <% possible_events = Event.tagged_with(@user.tag_list, on: :tags, any: true) %>
   <% possible_events = possible_events.sort_by { |event| event.updated_at } %>
-  <% possible_projects.slice(0, 5).each do |project| %>
-    <br /><%= project.title %>
+  <% possible_events.slice(0, 5).each do |event| %>
+    <br /><%= link_to event.title, event %>
   <% end %>
   <br />
   <br />
@@ -31,5 +31,6 @@
 Want more ideas? <%= link_to 'Update your interests!', edit_user_url(@user) %>
 
 <div align="center">
-  -- <%= link_to 'Bootcampr', root_url %>
+  -- <%= link_to 'Bootcampr', root_url %><br />
+  <a href='https://twitter.com/bootcamprapp'><%= image_tag(attachments['twitter_icon.png'].url, width: 25) %> @bootcamper</a></small>
 </div>
