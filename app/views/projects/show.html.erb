@@ -52,19 +52,15 @@
   <% end %>
 
 
-
-
-
-<% if !@project.events.empty? %>
-  <div>
-    <h3>Upcoming Events</h3>
-
+<div class='list-project-events'>
+  <% if !@project.events.empty? %>
+    <h3>Related Events </h3>
     <% @project.events.each do |event| %>
       <div>
-        <%= link_to event.title, event_path %>
+        <%= link_to event.title, event_path %><br>
       </div>
     <% end %>
-  </div>
+  </div><br>
 <% end %>
 
 <% if current_user == @project.owner %>

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @events = @user.events.order(:date, :time)
   end
 
   def edit
@@ -21,8 +22,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-
-  params.require(:user).permit(:first_name, :last_name, :bootcamp, :location, :summary, :tag_list, :image, :email, :password, :github_handle, :twitter_handle, :website, :linkedin_handle)
-
+    params.require(:user).permit(:first_name, :last_name, :bootcamp, :location, :summary, :tag_list, :image, :email, :password, :github_handle, :twitter_handle, :website, :linkedin_handle)
   end
 end

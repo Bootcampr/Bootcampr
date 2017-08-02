@@ -36,7 +36,6 @@ gem 'dotenv'
 gem 'omniauth-github'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'github_api'
-gem 'whenever', :require => false
 
 # Twitter
 gem 'twitter'

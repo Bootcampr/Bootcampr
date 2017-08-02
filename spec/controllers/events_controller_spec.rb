@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe EventsController do
-  let(:test_event) { Event.create(title: 'title', date: '2017-07-27', time: '2000-01-01 23:51:12', location: 'sea', summary: 'that', owner_id: 1) }
+  let(:test_event) { Event.create(title: 'title', date: '2300-07-27', time: '2300-01-01 23:51:12', location: 'sea', summary: 'that', owner_id: 1) }
   let!(:event) { FactoryGirl.build(:event) }
   let!(:user) { FactoryGirl.create(:user) }
 

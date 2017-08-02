@@ -11,7 +11,7 @@
     <span class='user-link user-profile'><%= link_to image_tag('github_icon.png', width: 50), "https://github.com/#{@user.github_handle}"  if @user.github_handle != '' %></span>
     <span class='user-link user-profile'><%= link_to image_tag('twitter_icon.png', width: 50), "https://twitter.com/#{@user.twitter_handle}" if @user.twitter_handle != '' %></span>
     <span class='user-link user-profile'><%= link_to image_tag('linkedin_icon.png', width: 50), "https://linkedin.com/in/#{@user.linkedin_handle}" if @user.linkedin_handle != '' %></span>
-    <span class='user-link user-profile'><%= link_to image_tag('website_icon.jpg', width: 50), @user.website if @user.website != '' %></span>
+    <span class='user-link user-profile'><%= link_to image_tag('globe.jpg', width: 50), @user.website if @user.website != '' %></span>
     <% if @user == current_user %>
       <p><%= link_to "Edit Profile", edit_user_path(current_user) %></p>
       <p><%= link_to "Account Settings", edit_user_registration_path %></p>
@@ -49,8 +49,10 @@
   </div>
   <h2>Affiliated Events:</h2>
   <div class="user-profile-events user-profile">
-    <% @user.events.each do |event| %>
-    <p><%= link_to "#{event.title}", event_path(event) %></p>
+    <% @events.each do |event| %>
+      <% if event.date >= Date.today %>
+      <p><%= link_to "#{event.title}", event %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
