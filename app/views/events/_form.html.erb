@@ -1,10 +1,18 @@
-<div>
-  <% @event.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
+<%= render 'shared/errors', object: @project %>
 
-  <% if @project %>
-    <%= form_for @event, url: project_events_path do |f| %>
+<% if @project %>
+  <%= form_for @event, url: project_events_path do |f| %>
+    Title: <%= f.text_field :title %><br>
+    Date: <%= f.date_field :date %><br>
+    Time: <%= f.time_field :time %><br>
+    Location: <%= f.text_field :location %><br>
+    Summary: <%= f.text_area :summary %><br>
+    Categories: <%= f.text_field :tag_list, value: '' %><br />
+    Image (optional): <%= f.file_field :image %>
+    <%= f.submit %><br>
+  <% end %>
+<% else %>
+  <%= form_for @event do |f| %>
       Title: <%= f.text_field :title %><br>
       Date: <%= f.date_field :date %><br>
       Time: <%= f.time_field :time %><br>
@@ -14,17 +22,4 @@
       Image (optional): <%= f.file_field :image %>
       <%= f.submit %><br>
     <% end %>
-  <% else %>
-    <%= form_for @event do |f| %>
-        Title: <%= f.text_field :title %><br>
-        Date: <%= f.date_field :date %><br>
-        Time: <%= f.time_field :time %><br>
-        Location: <%= f.text_field :location %><br>
-        Summary: <%= f.text_area :summary %><br>
-        Categories: <%= f.text_field :tag_list, value: '' %><br />
-        Image (optional): <%= f.file_field :image %>
-        <%= f.submit %><br>
-      <% end %>
-  <% end %>
-
-</div>
+<% end %>

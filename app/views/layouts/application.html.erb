@@ -15,15 +15,29 @@
     </div>
     <% if request.env['PATH_INFO'] == '/' %>
       <%= render 'shared/hero' %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert]%>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% elsif flash[:error]%>
+        <p class="error"><%= flash[:error] %></p>
+      <% elsif flash[:success]%>
+        <p class="success"><%= flash[:success] %></p>
+      <% end %>
       <div class="content-container">
         <%= yield %>
       </div>
     <% else %>
       <div class="header-spacer"></div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert]%>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% elsif flash[:error]%>
+        <p class="error"><%= flash[:error] %></p>
+      <% elsif flash[:success]%>
+        <p class="success"><%= flash[:success] %></p>
+      <% end %>
       <div class="content-container">
         <%= yield %>
       </div>
