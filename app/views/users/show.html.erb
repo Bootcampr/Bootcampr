@@ -1,5 +1,11 @@
 <div class="user-picture-and-links user-col">
-  <h2 class='user-header'><%= @user.full_name %>'s Profile</h2>
+  <h2 class='user-header-name'>
+    <% if @user.full_name.blank? %>
+      Your Profile
+    <% else %>
+      <%= @user.full_name %>
+    <% end %>
+  </h2>
   <div class="profile-picture-container">
     <% if @user.image_stored? %>
     <%= image_tag @user.image.thumb('256x256').url %>
