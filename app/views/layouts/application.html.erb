@@ -5,24 +5,29 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag    'landing-page', media: 'all' if controller_name == 'pages' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class='welcome'>
+  <body>
     <div class="header-container">
       <%= render 'shared/header' %>
     </div>
-    <div class="hero-section">
-      <div class="hero-section-text">
-        <h1>Made by Bootcamprs For Bootcamprs</h1>
-        <p>To create beautiful and meaningful things</p>
+    <% p request.env['PATH_INFO'] == '/' %>
+    <% if request.env['PATH_INFO'] == '/' %>
+      <%= render 'shared/hero' %>
+      <div class="header-spacer"></div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="content-container">
+        <%= yield %>
       </div>
-    </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="content-container">
-      <%= yield %>
-    </div>
+    <% else %>
+      <div class="header-spacer"></div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
   </html>
