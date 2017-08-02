@@ -1,8 +1,9 @@
 <div class='page-title'><h2>Projects</h2>
 
 <% if user_signed_in? %>
-  <div>
-    Have a new project? Click <%= link_to 'here', new_project_path %> to list it.
+  <div class='new-project-event-button'>
+    Add new project
+    <span><%= link_to image_tag('small-plus-sign.png', width: 50), new_project_path %></span>
   </div>
 <% end %>
 
