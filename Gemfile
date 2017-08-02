@@ -36,6 +36,7 @@ gem 'dotenv'
 gem 'omniauth-github'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'github_api'
+gem 'whenever', :require => false
 
 # Twitter
 gem 'twitter'
@@ -75,7 +76,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
-  
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
