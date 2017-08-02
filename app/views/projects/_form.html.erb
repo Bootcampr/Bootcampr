@@ -1,8 +1,4 @@
-<div>
-  <% @project.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
-</div>
+<%= render 'shared/errors', object: @project %>
 
 <div>
   <% if @event %>

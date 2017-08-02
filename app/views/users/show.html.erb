@@ -42,18 +42,71 @@
 </div>
 
 <div class="user-assets user-col">
-  <h2 class='user-header'>Affiliated Projects:</h2>
-  <div class='user-profile-projects user-profile'>
-    <% @user.projects.each do |project| %>
-    <p><%= link_to "#{project.title}", project_path(project) %></p>
-    <% end %>
+  <h2 class='user-header'>Activity:</h2>
+  <strong>Affiliated Projects:</strong>
+  <% if @user.projects %>
+    <div class="project-modal">
+      <div class="modal">
+        <label for="modal-1">
+          <div class="modal-trigger">
+            <% if @user.projects.length == 1 %>
+              <p><%= @user.projects[0].title %></p>
+            <% elsif @user.projects.length == 2 %>
+              <p> <%= @user.projects.last.title %> and 1 more project </p>
+            <% else %>
+              <p><%= @user.projects.last.title %> and <%= @user.projects.length - 1 %> more projects</p>
+            <% end %>
+          </div>
+        </label>
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal-fade-screen">
+          <div class="modal-inner">
+            <div class="modal-close" for="modal-1"></div>
+            <h1>Affiliated Projects</h1>
+            <p class="modal-intro">A list of projects affiliated with <%= @user.full_name %></p>
+            <ul>
+              <% @user.projects.each do |project| %>
+              <li><p class='modal-content'><%= link_to "#{project.title}", project_path(project) %></p></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <p>This user has not added any projects</p>
+  <% end %>
+  <strong>Affiliated Events:</strong>
+  <% if @user.events %>
+  <div class="event-modal">
+    <div class="modal">
+      <label for="modal-2">
+        <div class="modal-trigger">
+          <% if @user.events.length == 1 %>
+          <p><%= @user.events[0].title %></p>
+          <% elsif @user.events.length == 2 %>
+          <p> <%= @user.events.last.title %> and 1 more project</p>
+          <% else %>
+          <p><%= @user.events.last.title %> and <%= @user.events.length - 1 %> more events</p>
+          <% end %>
+        </div>
+      </label>
+      <input class="modal-state" id="modal-2" type="checkbox" />
+      <div class="modal-fade-screen">
+        <div class="modal-inner">
+          <div class="modal-close" for="modal-2"></div>
+          <h1>Affiliated Events</h1>
+          <p class="modal-intro">A list of events affiliated with <%= @user.full_name %></p>
+          <ul>
+            <% @user.events.each do |event| %>
+            <li><p class='modal-content'><%= link_to "#{event.title}", event_path(event) %></p></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-  <h2>Affiliated Events:</h2>
-  <div class="user-profile-events user-profile">
-    <% @events.each do |event| %>
-      <% if event.date >= Date.today %>
-      <p><%= link_to "#{event.title}", event %></p>
-      <% end %>
-    <% end %>
-  </div>
+  <% else %>
+    <p>This user has not added any events</p>
+  <% end %>
 </div>
