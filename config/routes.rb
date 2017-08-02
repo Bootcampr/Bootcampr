@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get 'users/:id/subscribe', to: 'users#subscriptions'
+  get 'users/:id/unsubscribe', to: 'users#subscriptions'
+
   resources :tags, only: [:index, :show]
 
   root to: 'pages#index'

@@ -1,0 +1,5 @@
+<% if @user.subscribed == true %>
+  Thanks for signing up for our email newsletter, <%= @user.first_name %>! Look for them every Sunday.
+<% else %>
+  We're sorry to see you unsubscribe, <%= @user.first_name %>. Don't forget you can resubscribe through your user profile at any time!
+<% end %>
