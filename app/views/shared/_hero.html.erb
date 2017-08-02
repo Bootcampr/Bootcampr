@@ -2,5 +2,15 @@
   <div class="hero-section-text">
     <h1>Made by Bootcamprs For Bootcamprs</h1>
     <p>To create beautiful and meaningful things</p>
+    <% if user_signed_in? %>
+    <div class="index-buttons">
+      <form class="events-index" action="/events" method="get">
+        <input type="submit" value="Events">
+      </form>
+      <form class="projects-index" action="/projects" method="get">
+        <input type="submit" value="Projects">
+      </form>
+    </div>
+    <% end %>
   </div>
 </div>

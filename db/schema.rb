@@ -33,15 +33,6 @@ ActiveRecord::Schema.define(version: 20170802182438) do
     t.index ["project_id"], name: "index_collaborations_on_project_id", using: :btree
   end
 
-  create_table "collaborators", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_collaborators_on_project_id", using: :btree
-    t.index ["user_id"], name: "index_collaborators_on_user_id", using: :btree
-  end
-
   create_table "events", force: :cascade do |t|
     t.string   "title",      null: false
     t.date     "date",       null: false
