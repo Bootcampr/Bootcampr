@@ -19,6 +19,19 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def subscriptions
+    @user = User.find(params[:id])
+    if @user == current_user
+      @user.subscribed = !@user.subscribed
+      @user.save
+      notice = 'You have successfully subscribed to emails.' if @user.subscribed
+      notice = 'You have successfully unsubscribed to emails.' if !@user.subscribed
+      redirect_to user_path(@user), notice: notice
+    else
+      redirect_to user_path(@user)
+    end
+  end
+
   private
 
   def user_params
