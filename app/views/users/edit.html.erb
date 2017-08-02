@@ -48,7 +48,7 @@
        <%= f.text_area :summary %>
 
        <%= f.label 'Interests (comma-separated)' %>
-       <%= f.text_field :tag_list, value: @user.tag_list.join(', ') %>
+       <%= f.text_field :tag_list, value: f.object.tag_list.to_s %>
 
        <%= f.submit %>
 

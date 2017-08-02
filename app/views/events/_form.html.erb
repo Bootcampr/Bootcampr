@@ -10,7 +10,7 @@
       Time: <%= f.time_field :time %><br>
       Location: <%= f.text_field :location %><br>
       Summary: <%= f.text_area :summary %><br>
-      Categories: <%= f.text_field :tag_list, value: '' %><br />
+      Categories: <%= f.text_field :tag_list, value: f.object.tag_list.to_s %><br />
       Image (optional): <%= f.file_field :image %>
       <%= f.submit %><br>
     <% end %>
@@ -21,7 +21,7 @@
         Time: <%= f.time_field :time %><br>
         Location: <%= f.text_field :location %><br>
         Summary: <%= f.text_area :summary %><br>
-        Categories: <%= f.text_field :tag_list, value: '' %><br />
+        Categories: <%= f.text_field :tag_list, value: f.object.tag_list.to_s %><br />
         Image (optional): <%= f.file_field :image %>
         <%= f.submit %><br>
       <% end %>
