@@ -25,17 +25,26 @@ html {
 
 body {
   min-height: 100%;
-  font-family: helvetica, sans-serif;
+  font-family: PT Sans, sans-serif;
   margin: 0 auto;
 }
 
 .title, h2, h3 {
-  font-family: courier, serif;
+  font-family: PT Sans, serif;
   font-size: 1.5em;
 }
 
-h1.hero-section-text  {
-  font-family: courier new;
+.hero-statement-line1 {
+  font-size: 3em;
+}
+
+.hero-statement-line2 {
+  font-size: 2em;
+  letter-spacing: .2em;
+}
+
+hero-section-text  {
+  font-family: PT Sans Bold new;
 }
 
 h1.title {
@@ -250,7 +259,7 @@ img {
 $hero-height: 80vh;
 
 .hero-section {
-  background: image-url("hero.jpg") 50% no-repeat;
+  background: image-url("canva-photo-editor.png") 50% no-repeat;
   background-size: cover;
   background-attachment: fixed;
   height: $hero-height;
