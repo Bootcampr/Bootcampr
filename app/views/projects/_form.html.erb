@@ -7,7 +7,7 @@
       Summary: <%= f.text_field :summary %><br>
       Stack: <%= f.text_field :stack %><br>
       Repo: <%= f.text_field :repository %><br>
-      Categories: <%= f.text_field :tag_list, value: '' %><br />
+      Categories: <%= f.text_field :tag_list, value: f.object.tag_list.to_s %><br />
       Image (optional): <%= f.file_field :image %>
       <%= f.submit %><br>
     <% end %>
@@ -17,7 +17,7 @@
       Summary: <%= f.text_field :summary %><br>
       Stack: <%= f.text_field :stack %><br>
       GitHub Repo URL: <%= f.text_field :repository %><br>
-      Categories: <%= f.text_field :tag_list, value: '' %><br />
+      Categories: <%= f.text_field :tag_list, value: f.object.tag_list.to_s %><br />
       Image (optional): <%= f.file_field :image %>
       <%= f.submit %><br>
     <% end %>
