@@ -4,6 +4,7 @@
 @import "nav-bar";
 @import "fp-columns";
 @import "cards";
+@import "modal";
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -295,4 +296,8 @@ $hero-height: 80vh;
   height: 220;
   margin: 10px;
   display: inline;
+}
+
+.project-modal, .event-modal {
+  text-align: center;
 }
