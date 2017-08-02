@@ -42,38 +42,53 @@
 
 <div class="user-assets user-col">
   <h2 class='user-header'>Activity:</h2>
-  <strong>Projects:</strong>
-  <% @user.projects.order(created_at: :desc).limit(5).each do |project| %>
-    <p><%= link_to project.title, project_path(project) %></p>
-  <% end %>
-  <div class="project-modal">
-    <div class="modal">
-      <label for="modal-1">
-        <div class="modal-trigger"> <%= @user.projects.last.title %> and <%= @user.projects.length - 1 %> more projects</div>
-      </label>
-      <input class="modal-state" id="modal-1" type="checkbox" />
-      <div class="modal-fade-screen">
-        <div class="modal-inner">
-          <div class="modal-close" for="modal-1"></div>
-          <h1>Affiliated Projects</h1>
-          <p class="modal-intro">A list of projects affiliated with <%= @user.full_name %></p>
-          <ul>
-            <% @user.projects.each do |project| %>
-            <li><p class='modal-content'><%= link_to "#{project.title}", project_path(project) %></p></li>
+  <strong>Affiliated Projects:</strong>
+  <% if @user.projects %>
+    <div class="project-modal">
+      <div class="modal">
+        <label for="modal-1">
+          <div class="modal-trigger">
+            <% if @user.projects.length == 1 %>
+              <p><%= @user.projects[0].title %></p>
+            <% elsif @user.projects.length == 2 %>
+              <p> <%= @user.projects.last.title %> and 1 more project </p>
+            <% else %>
+              <p><%= @user.projects.last.title %> and <%= @user.projects.length - 1 %> more projects</p>
             <% end %>
-          </ul>
+          </div>
+        </label>
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal-fade-screen">
+          <div class="modal-inner">
+            <div class="modal-close" for="modal-1"></div>
+            <h1>Affiliated Projects</h1>
+            <p class="modal-intro">A list of projects affiliated with <%= @user.full_name %></p>
+            <ul>
+              <% @user.projects.each do |project| %>
+              <li><p class='modal-content'><%= link_to "#{project.title}", project_path(project) %></p></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <strong>Events:</strong>
-  <% @user.events.order(created_at: :desc).limit(5).each do |event| %>
-    <p><%= link_to event.title, event_path(event) %></p>
+  <% else %>
+    <p>This user has not added any projects</p>
   <% end %>
+  <strong>Affiliated Events:</strong>
+  <% if @user.events %>
   <div class="event-modal">
     <div class="modal">
       <label for="modal-2">
-        <div class="modal-trigger"><%= @user.events.last.title %> and <%= @user.events.length - 1 %> more events</div>
+        <div class="modal-trigger">
+          <% if @user.events.length == 1 %>
+          <p><%= @user.events[0].title %></p>
+          <% elsif @user.events.length == 2 %>
+          <p> <%= @user.events.last.title %> and 1 more project</p>
+          <% else %>
+          <p><%= @user.events.last.title %> and <%= @user.events.length - 1 %> more events</p>
+          <% end %>
+        </div>
       </label>
       <input class="modal-state" id="modal-2" type="checkbox" />
       <div class="modal-fade-screen">
@@ -90,4 +105,7 @@
       </div>
     </div>
   </div>
+  <% else %>
+    <p>This user has not added any events</p>
+  <% end %>
 </div>
