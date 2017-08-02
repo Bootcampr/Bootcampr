@@ -9,3 +9,5 @@ Recently-posted events:
 
 <% possible_events = Event.tagged_with(@user.tag_list, on: :tags, any: true) %><% possible_events = possible_events.sort_by { |event| event.updated_at } %><% possible_projects.slice(0, 5).each do |project| %><%= project.title %><%= "\r\n" %><% end %>
 Want more ideas? <%= link_to 'Update your interests!', edit_user_url(@user) %>
+
+-- <%= link_to 'Bootcampr', root_url %>
