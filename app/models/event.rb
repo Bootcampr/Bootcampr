@@ -9,6 +9,7 @@ class Event < ApplicationRecord
     has_many :projects, through: :events_projects
     has_many :attendances
     has_many :attendees, through: :attendances
+    
     acts_as_taggable
     acts_as_taggable_on :categories
 
