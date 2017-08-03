@@ -27,7 +27,7 @@ You can register an account with Bootcampr through your email, or through author
 Once you've signed up, you can begin contributing to our community of bootcamp students and graduates. You'll be first taken to finish filling out your profile, where you can let the community know some things about you, including what you're interested in.
 
 **make things**  
-Then you can begin making projects and scheduling events for the community. Whether you want to set up a physical meet-up to network or talk shop, or online 'office hours' to work through new technologies, or organize a project, Bootcampr events can help you get the word out. Projects serve as great pitch points for that idea you had, and can help you find others who are interested in putting heads together to solve big problems (and little ones too!).
+Then you can begin making projects and scheduling events for the community. Bootcampr events can help you get the word out, whether you want to set up a physical meet-up to network or talk shop, or to host online 'office hours' to work through new technologies, or to organize a project. Projects serve as great pitch points for that idea you had, and can help you find others who are interested in putting heads together to solve big problems (and little ones too!).
 
 ### your community
 
