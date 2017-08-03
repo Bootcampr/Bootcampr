@@ -7,10 +7,29 @@
 
 <div class='clear'></div>
 
-<% @tags.each do |tag| %>
-  <div class='tag'>
-    <%= link_to tag.name, tag %>
-  </div>
-<% end %>
+<div class="tag-page-content">
 
-<%= button_to 'Back', url_for(:back), :method => :get, class: 'back-button' %>
+
+
+
+  <div class="tag-grid-items-lines">
+    <% @tags.each do |tag| %>
+      <%= link_to tag, :class => "tag-grid-item" do %>
+        <%= tag.name %>
+        <% end %>
+    <% end %>
+    <div class="tag-right-cover"></div>
+    <div class="tag-bottom-cover"></div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <%= button_to 'Back', url_for(:back), :method => :get, class: 'back-button' %>
+</div>
