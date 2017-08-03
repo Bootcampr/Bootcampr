@@ -7,10 +7,10 @@
 
 <div class='clear'></div>
 
-<div class="grid-items-lines">
+<div>
+  
   <% @tags.each do |tag| %>
-    <%= link_to tag.name, tag, :class => "grid-item" %>
+    <%= link_to tag.name, tag %>
   <% end %>
-  <div class="right-cover"></div>
-  <div class="bottom-cover"></div>
+
 </div>
