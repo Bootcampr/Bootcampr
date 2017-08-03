@@ -60,5 +60,5 @@ Practice your whiteboarding skills, and give feedback to others who are learning
 
 ## thanks
 
-* Dev Bootcamp Seattle, for providing an inspiring and welcoming platform for learning.
-* The Rock Doves cohort, for providing a supportive and empathic foundation. 🐦
+* Dev Bootcamp Seattle, for providing an inspiring and welcoming platform for learning to be better developers.
+* The Rock Doves cohort, for providing a supportive and empathic foundation for learning to be better people. 🐦
