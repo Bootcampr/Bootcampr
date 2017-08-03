@@ -351,7 +351,10 @@ $flashes: (
     display: block;
     float: none !important;
     width: 100%;
-    text-align: center;
+  }
+
+  .welcome-spiel {
+    text-align: justify;
   }
 
   .hero-statement-line1, .hero-statement-line2 {
