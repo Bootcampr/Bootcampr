@@ -6,22 +6,18 @@
 //   height: 100%;
 //   margin: 0 auto -4em;
 // }
-
+//
 // html, body {
 //  height: 100%;
 // }
-
+//
 // .wrapper-for-content-outside-of-footer::after {
 //   content: "";
 //   display: block;
 // }
-
+//
 // .footer-2, .wrapper-for-content-outside-of-footer::after {
 //   height: 17em;
-
-//   @include media($large-screen) {
-//     height: 4em;
-//   }
 // }
 
 .footer-2 {
@@ -29,15 +25,21 @@
   $action-color: #477DCA !default;
   $medium-screen: 40em !default;
   $large-screen: 53.75em !default;
-  $footer-background: desaturate(darken($action-color, 20%), 30%);
+  $footer-background: #333;
   $footer-color: white;
-  $footer-link-color: transparentize($footer-color, 0.6);
-  $footer-disclaimer-color: transparentize($footer-color, 0.6);
+  $footer-link-color: transparentize(white, 0.3);
+  $footer-disclaimer-color: transparentize(white, 0.3);
 
   background: $footer-background;
   display: inline-block;
   padding: $base-spacing;
   width: 100%;
+  height: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 15px;
 
   .footer-logo {
     margin-bottom: 1em;
