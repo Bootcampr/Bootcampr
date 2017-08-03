@@ -10,7 +10,7 @@
 
 <div class="grid-items-lines">
   <% @events.each do |event| %>
-    <%= link_to event, :class => (event.id % [3, 5, 7].sample == 0 ? "grid-item-big" : "grid-item") do %>
+    <%= link_to event, :class => "grid-item" do %>
       <%= render partial: 'grid_items', locals: { event: event } %>
     <% end %>
   <% end %>
