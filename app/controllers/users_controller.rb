@@ -16,6 +16,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.assign_attributes(user_params)
+    if @user.first_name == ''
+      @user.first_name = nil
+    end
+    if @user.last_name == ''
+      @user.last_name = nil
+    end
     @user.tag_list = user_params[:tag_list]
     @user.save
     flash[:success] = "Your profile was updated."

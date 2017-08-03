@@ -7,6 +7,10 @@
 @import "grids";
 @import "tag_grids";
 @import "footer";
+@import "dynamic_height_container";
+@import "parallax";
+@import "side_image";
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -44,7 +48,6 @@ body {
 .hero-statement-line2 {
   font-size: 2em;
   letter-spacing: .2em;
-  margin-bottom: 50px;
 }
 
 hero-section-text  {
@@ -80,7 +83,6 @@ a:visited {
   float: left;
   display: inline;
   width: 60%;
-  height: 320px;
   margin-bottom: 20px;
 }
 
@@ -88,7 +90,6 @@ a:visited {
   float: left;
   display: inline;
   width: 40%;
-  height: 320px;
   margin-bottom: 20px;
 }
 
@@ -235,7 +236,6 @@ $hero-height: 80vh;
     color: #fff;
     font-size: 1.5em;
     text-shadow: 1px 1px 2px #000;
-    padding-right: 30px;
   }
 }
 
@@ -272,9 +272,9 @@ $hero-height: 80vh;
 .project-modal, .event-modal {
   text-align: center;
 }
-.index-buttons {
-  padding-top: 45px;
 
+.index-buttons {
+  padding-top: 20px;
 }
 
 $base-spacing: 1.5em !default;
@@ -352,9 +352,24 @@ $flashes: (
   // Front page responsiveness
   .col-1, .col-2 {
     display: block;
-    float: none !important;
+    float: none;
     width: 100%;
+    padding: 0;
+  }
+
+  .welcome-spiel {
+    text-align: justify;
+    padding: 0;
+    margin: 5 0 auto;
+  }
+
+  .welcome-spiel h2 {
     text-align: center;
+  }
+
+  .sign-up-form-container {
+    padding: none;
+    margin: 0 auto;
   }
 
   .hero-statement-line1, .hero-statement-line2 {
@@ -379,6 +394,10 @@ $flashes: (
     border-top: 1px dotted gray;
     border-bottom: 1px dotted gray;
     margin: 0 auto;
+  }
+
+  .new-stuff {
+    text-align: center;
   }
 
   /* Force table to not be like tables anymore */

@@ -18,8 +18,9 @@ Dragonfly.app.configure do
       bucket_name: 'bootcampr',
       access_key_id: ENV['S3_KEY'],
       secret_access_key: ENV['S3_SECRET'],
-      url_scheme: 'https'
-    end
+      url_scheme: 'https',
+      region: 'us-west-2'
+  end
 end
 
 # Logger
