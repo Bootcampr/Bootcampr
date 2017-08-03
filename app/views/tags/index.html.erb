@@ -1,7 +1,16 @@
-<h2 class='tag-title'>Categories</h2>
+<div class='page-title'><h2>Categories</h2></div>
 
-<% @tags.each do |tag| %>
-  <div class='tag'>
-    <%= link_to tag.name, tag %>
-  </div>
-<% end %>
+<div class='clear'></div>
+
+<div class='categories-page-summary'><p>As well as being personal interests of Bootcamprs, categories are tagged on to projects & events.</p><p> <%= link_to "Choose a random topic!", @tags.sample %> </p></div>
+
+
+<div class='clear'></div>
+
+<div class="grid-items-lines">
+  <% @tags.each do |tag| %>
+    <%= link_to tag.name, tag, :class => "grid-item" %>
+  <% end %>
+  <div class="right-cover"></div>
+  <div class="bottom-cover"></div>
+</div>
