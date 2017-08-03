@@ -31,7 +31,7 @@
 
       <div class='list-project-events'><p>
         <% if !@project.events.empty? %>
-          <h3>Related Events </h3>
+          <p>Related Events </p>
           <% @project.events.each do |event| %>
             <div><p>
               <%= link_to event.title, event_path %><br>
@@ -48,9 +48,11 @@
 
       <div class="list-project-collaborators"><p>
         <strong>Collaborators:</strong></br>
-        <% @project.collaborators.each do |collaborator| %>
-        <%= link_to collaborator.full_name, collaborator %>
-        <br />
+        <% if @project.collaborators != nil %>
+          <% @project.collaborators.each do |collaborator| %>
+            <%= link_to collaborator.full_name, collaborator %>
+          <br />
+          <% end %>
         <% end %>
       </div></p>
 
@@ -63,94 +65,25 @@
         <% end %>
       </div>
 
+      <div class='list-project-events'>
+        <p><strong>Related Events:</strong>
+        <% if !@project.events.empty? %>
+        <% @project.events.each do |event| %>
+        <%= link_to event.title, event_path %>
+        <% end %></p>
+      </div>
+      <% end %>
+
       <div>
         <% if current_user == @project.owner %>
         <%= link_to 'Add a new event for this project', new_project_event_path(@project) %>
         <% end %>
       </div>
 
-      <div class='list-project-events'>
-        <% if !@project.events.empty? %>
-        <h3><strong>Related Events</strong></h3>
-        <% @project.events.each do |event| %>
-        <div>
-          <%= link_to event.title, event_path %><br>
-        </div>
-        <% end %>
-      </div><br>
-      <% end %>
 
       <% if current_user == @project.owner %>
-        <%= link_to 'Edit this project', edit_project_path %><br>
-        <%= link_to 'Scrap this project', project_path(@project), method: :delete, data: { confirm: "Are you sure you'd like to delete this project?" } %>
+        <%= button_to 'Edit this project', edit_project_path, class: 'show-buttons' %>
+        <%= button_to 'Scrap this project', project_path(@project), method: :delete, data: { confirm: "Are you sure you'd like to delete this project?" }, class: 'show-buttons' %>
       <% end %>
-      <%= button_to 'Back', url_for(:back), :method => :get, class: 'back-button' %>
+      <%= button_to 'Back', url_for(:back), :method => :get, class: 'show-buttons' %>
 </div>
-
-
-
-
-
-
-<!-- <div id="js-parallax-window" class="parallax-window">
-  <div class="parallax-static-content">
-  </div>
-  <div id="js-parallax-background" class="parallax-background"></div>
-  <style media="screen">
-    .parallax-background {
-      background: url( <%= @project.image_stored? ? @project.image.url : "http://lorempixel.com/1400/500/abstract" %> ) no-repeat;
-    }
-  </style>
-</div> -->
-
-
-<!-- <h2><%= @project.title %></h2>
-
-<a href="<%= @project.repository %>"><%= image_tag @project.image.thumb('400x200#').url if @project.image_stored? %></a>
-
-<p><%= @project.summary %></p>
-
-<div>
-  <strong>Project Owner:</strong>
-
-  <% if @project.owner.first_name == nil %>
-    <%= link_to 'A user has no name', @project.owner %>
-  <% else %>
-    <%= link_to @project.owner.full_name, @project.owner %>
-  <% end %>
-
-</div>
-
-<div>
-  <strong>Potential stack:</strong> <%= @project.stack %>
-</div>
-
-<div>
-  <strong>Repository:</strong> <a href="<%= @project.repository %>"><%= @project.repository %></a>
-</div> -->
-
-<!-- <% if !@project.tag_list.empty? %>
-  <div>
-    <strong>Categories:</strong> <%= safe_join(@project.tag_list.map { |tag| link_to(tag, tag_path(Tag.find_by(name: tag))) }, ", ".html_safe) %>
-  </div>
-<% end %> -->
-
-
-
-
-<!-- <div class="list-project-collaborators">
-  <h3>Collaborators:</h3>
-  <% @project.collaborators.each do |collaborator| %>
-      <%= link_to collaborator.full_name, collaborator %>
-    <br />
-  <% end %>
-</div> -->
-
-<!-- <div class="collab-button">
-  <% if user_signed_in? && !@project.collaborators.include?(current_user) && !@project.owner == current_user %>
-    <% @collaboration = Collaboration.new %>
-    <%= form_for([@project, @collaboration], remote: true) do |f| %>
-      <%= f.submit 'Become a collaborator on this project' %>
-    <% end %>
-  <% end %>
-</div> -->
