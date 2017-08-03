@@ -13,6 +13,10 @@
   </p>
 
   <p>
-    Let's get started today.
+    <% if user_signed_in? %>
+      <%= link_to "Let's get started today.", tags_path %>
+    <% else %>
+      <%= link_to "Let's get started today.", new_user_registration_path %>
+    <% end %>
   </p>
 </div>
