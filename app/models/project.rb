@@ -14,12 +14,4 @@ class Project < ApplicationRecord
 
   validates_format_of :repository, with: /\A(http|https):\/\/github.com(([0-9]{1,5})?\/.*)?\z/, message: 'must be blank or a valid github url', allow_blank: true
 
-  def use_img
-    if self.image_stored?
-      "<%= image_tag self.image.thumb('300x300').url%>"
-    else
-      '<img src="http://lorempixel.com/400/200/abstract" alt="">'
-    end
-  end
-
 end
