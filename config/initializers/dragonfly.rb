@@ -14,7 +14,7 @@ Dragonfly.app.configure do
       root_path: Rails.root.join('public/system/dragonfly', Rails.env),
       server_root: Rails.root.join('public')
   else
-    datastore :s3
+    datastore :s3,
       bucket_name: 'bootcampr',
       access_key_id: ENV['S3_KEY'],
       secret_access_key: ENV['S3_SECRET'],
