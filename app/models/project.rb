@@ -13,4 +13,5 @@ class Project < ApplicationRecord
   acts_as_taggable_on :categories
 
   validates_format_of :repository, with: /\A(http|https):\/\/github.com(([0-9]{1,5})?\/.*)?\z/, message: 'must be blank or a valid github url', allow_blank: true
+
 end
