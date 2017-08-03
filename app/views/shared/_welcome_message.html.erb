@@ -1,9 +1,22 @@
 <div class="welcome-spiel col-1">
-  <p>Calling all Seattle Bootcamp Grads. This is a call to unite.</p>
+  <h2>Calling all bootcampers!</h2>
   <p>
-    We are a group of alums from Dev Bootcamp Seattle. Our goal is to build a community of web developers. This is a place where bootcamp grads flock to build beautiful and meaningful things.
+    When we at Bootcampr graduated from Dev Bootcamp Seattle, we didn't want to lose the special community we had made through weeks of learning, hard work, and (of course) stress. In fact, we wanted to extend that community even further, and invite in all who have shared in those experiences.
   </p>
-  <% if !user_signed_in? %>
-    <p> <%= link_to 'Get started today!', new_user_registration_path %> </p>
-  <% end %>
+
+  <p>
+    We want to learn more. We want to share what we know. We want to know you better.
+  </p>
+
+  <p>
+    We want to make beautiful and meaningful things, and we want to do it with you.
+  </p>
+
+  <p>
+    <% if user_signed_in? %>
+      <%= link_to "Let's get started today.", tags_path %>
+    <% else %>
+      <%= link_to "Let's get started today.", new_user_registration_path %>
+    <% end %>
+  </p>
 </div>
