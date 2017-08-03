@@ -1,5 +1,5 @@
 <div class="user-picture-and-links user-col">
-  <h2 class='user-header'><%= @user.full_name %>'s Profile</h2>
+  <h2 class='user-header'><%= @user.full_name %></h2>
   <div class="profile-picture-container">
     <% if @user.image_stored? %>
     <%= image_tag @user.image.thumb('256x256').url %>
@@ -8,10 +8,18 @@
     <% end %>
   </div>
   <div class='user-project-links user-profile'>
-    <span class='user-link user-profile'><%= link_to image_tag('github_icon.png', width: 50), "https://github.com/#{@user.github_handle}"  if @user.github_handle != '' %></span>
-    <span class='user-link user-profile'><%= link_to image_tag('twitter_icon.png', width: 50), "https://twitter.com/#{@user.twitter_handle}" if @user.twitter_handle != '' %></span>
-    <span class='user-link user-profile'><%= link_to image_tag('linkedin_icon.png', width: 50), "https://linkedin.com/in/#{@user.linkedin_handle}" if @user.linkedin_handle != '' %></span>
-    <span class='user-link user-profile'><%= link_to image_tag('globe.jpg', width: 50), @user.website if @user.website != '' %></span>
+    <% if @user.github_handle != nil %>
+      <span class='user-link user-profile'><%= link_to image_tag('github_icon.png', width: 50), "https://github.com/#{@user.github_handle}"  if @user.github_handle != '' %></span>
+    <% end %>
+    <% if @user.twitter_handle != nil %>
+      <span class='user-link user-profile'><%= link_to image_tag('twitter_icon.png', width: 50), "https://twitter.com/#{@user.twitter_handle}" if @user.twitter_handle != '' %></span>
+    <% end %>
+    <% if @user.linkedin_handle != nil %>
+      <span class='user-link user-profile'><%= link_to image_tag('linkedin_icon.png', width: 50), "https://linkedin.com/in/#{@user.linkedin_handle}" if @user.linkedin_handle != '' %></span>
+    <% end %>
+    <% if @user.website != nil %>
+      <span class='user-link user-profile'><%= link_to image_tag('globe.jpg', width: 50), @user.website if @user.website != '' %></span>
+    <% end %>
     <% if @user == current_user %>
       <p><%= link_to "Edit Profile", edit_user_path(current_user) %></p>
       <p><%= link_to "Account Settings", edit_user_registration_path %></p>
@@ -22,6 +30,9 @@
 
 <div class="user-details user-col middle-col">
   <h2 class='user-header'>Details:</h2>
+  <div class='user-profile-bootcamp user-profile'>
+    <p>Email: <%= @user.email %></p>
+  </div>
   <div class='user-profile-bootcamp user-profile'>
     <p>Bootcamp: <%= @user.bootcamp %></p>
   </div>
@@ -44,7 +55,7 @@
 <div class="user-assets user-col">
   <h2 class='user-header'>Activity:</h2>
   <strong>Affiliated Projects:</strong>
-  <% if @user.projects %>
+  <% if @user.projects.any? %>
     <div class="project-modal">
       <div class="modal">
         <label for="modal-1">
@@ -77,17 +88,17 @@
     <p>This user has not added any projects</p>
   <% end %>
   <strong>Affiliated Events:</strong>
-  <% if @user.events %>
+  <% if @user.events.any? %>
   <div class="event-modal">
     <div class="modal">
       <label for="modal-2">
         <div class="modal-trigger">
           <% if @user.events.length == 1 %>
-          <p><%= @user.events[0].title %></p>
+            <p><%= @user.events[0].title %></p>
           <% elsif @user.events.length == 2 %>
-          <p> <%= @user.events.last.title %> and 1 more project</p>
+            <p> <%= @user.events.last.title %> and 1 more project</p>
           <% else %>
-          <p><%= @user.events.last.title %> and <%= @user.events.length - 1 %> more events</p>
+            <p><%= @user.events.last.title %> and <%= @user.events.length - 1 %> more events</p>
           <% end %>
         </div>
       </label>

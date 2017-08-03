@@ -1,30 +1,44 @@
-<div class='page-title'><h2>Projects</h2>
 
-<% if user_signed_in? %>
-  <div>
-    Have a new project? Click <%= link_to 'here', new_project_path %> to list it.
-  </div>
-<% end %>
+  <div class='page-title'><h2>Projects</h2></div>
 
-
-<div class='cards'>
-  <% @projects.each do |project| %>
-  <div class='card'>
-    <div class="card-image">
-      <% if project.image_stored? %>
-        <%= image_tag project.image.thumb('300x300').url %>
-      <% else %>
-        <img src="http://lorempixel.com/400/200/abstract" alt="">
-      <% end %>
+  <% if user_signed_in? %>
+    <div class='new-project-event-button'>
+      <span><%= link_to image_tag('new-projects.png'), new_project_path %></span>
     </div>
-    <div class='card-header'>
-      <div class='project-title'><h3><%= link_to project.title, project %><h3></div>
-    </div>
-    <div class='card-copy'>
-      <p>
-        <%= project.summary %>
-      </p>
-    </div>
-  </div>
   <% end %>
-</div>
+
+  <div class='clear'></div>
+
+  <div class="grid-items-lines">
+    <% @projects.each do |project| %>
+      <%= link_to project, :class => "grid-item" do %>
+        <%= render partial: 'grid_items', locals: { project: project } %>
+        <% end %>
+    <% end %>
+    <div class="right-cover"></div>
+    <div class="bottom-cover"></div>
+  </div>
+
+
+  <!-- CARDS
+  <div class='cards'>
+    <% @projects.each do |project| %>
+    <div class='card'>
+      <div class="card-image">
+        <% if project.image_stored? %>
+          <%= image_tag project.image.thumb('300x300').url %>
+        <% else %>
+          <img src="http://lorempixel.com/400/200/abstract" alt="">
+        <% end %>
+      </div>
+      <div class='card-header'>
+        <div class='project-title'><h3><%= link_to project.title, project %><h3></div>
+      </div>
+      <div class='card-copy'>
+        <p>
+          <%= project.summary %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  </div> -->
