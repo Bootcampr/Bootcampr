@@ -2,7 +2,6 @@
   <div class="hero-section-text">
     <div class="hero-statement-line1">MADE BY BOOTCAMPRS, FOR BOOTCAMPRS</div>
     <div class="hero-statement-line2">to create beautiful and meaningful things</div>
-    <% if user_signed_in? %>
     <div class="index-buttons">
       <form class="events-index" action="/events" method="get">
         <input type="submit" value="Events">
@@ -11,6 +10,5 @@
         <input type="submit" value="Projects">
       </form>
     </div>
-    <% end %>
   </div>
 </div>
