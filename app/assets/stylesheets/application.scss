@@ -93,10 +93,11 @@ a:visited {
 
 .welcome-spiel {
   margin-top: 10px;
-  font-size: 1.3em;
+  // font-size: 1.3em;
   padding: 30px;
   color: #000;
   opacity: 0.8;
+  text-align: justify;
 }
 
 .sign-up-form-container {
@@ -249,6 +250,7 @@ $hero-height: 80vh;
 
 .new-stuff {
   margin: 0 auto;
+  margin-top: 10px;
   // text-align: center;
   padding: 30px;
 }
