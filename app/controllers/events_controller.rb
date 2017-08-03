@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-
+  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :require_permission, :only => [:edit, :update, :destroy]
 
   def index
     @events = Event.all.order(:date, :time)
@@ -51,11 +52,16 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-
   private
 
   def event_params
     params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list, :image)
+  end
+
+  def require_permission
+    if current_user != Event.find(params[:id]).owner
+      redirect_to root_path
+    end
   end
 
 end
