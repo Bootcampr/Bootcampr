@@ -47,7 +47,7 @@
 </div>
 
 <div class="collab-button">
-  <% if user_signed_in? && !@project.collaborators.include?(current_user) %>
+  <% if user_signed_in? && !@project.collaborators.include?(current_user) && !@project.owner == current_user %>
     <% @collaboration = Collaboration.new %>
     <%= form_for([@project, @collaboration], remote: true) do |f| %>
       <%= f.submit 'Become a collaborator on this project' %>
