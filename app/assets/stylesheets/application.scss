@@ -79,7 +79,6 @@ a:visited {
   float: left;
   display: inline;
   width: 60%;
-  height: 320px;
   margin-bottom: 20px;
 }
 
@@ -87,7 +86,6 @@ a:visited {
   float: left;
   display: inline;
   width: 40%;
-  height: 320px;
   margin-bottom: 20px;
 }
 
@@ -351,12 +349,20 @@ $flashes: (
   // Front page responsiveness
   .col-1, .col-2 {
     display: block;
-    float: none !important;
+    float: none;
     width: 100%;
+    padding: 0;
   }
 
   .welcome-spiel {
     text-align: justify;
+    padding: 0;
+    margin: 5 0 auto;
+  }
+
+  .sign-up-form-container {
+    padding: none;
+    margin: 0 auto;
   }
 
   .hero-statement-line1, .hero-statement-line2 {
