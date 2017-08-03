@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :require_permission, :only => [:edit, :update, :destroy]
+
   def index
     @projects = Project.all
   end
@@ -19,6 +22,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.tag_list = project_params[:tag_list]
     @project.owner = current_user
+
     if @project.save
       if params[:event_id]
         EventsProject.create(event_id: params[:event_id].to_i, project_id: @project.id)
@@ -55,6 +59,12 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :summary, :stack, :repository, :tag_list, :image)
+  end
+
+  def require_permission
+    if current_user != Project.find(params[:id]).owner
+      redirect_to root_path
+    end
   end
 
 end
