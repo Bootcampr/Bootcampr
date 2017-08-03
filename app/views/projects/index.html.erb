@@ -1,4 +1,3 @@
-<div class="project-event-index-container">
 
   <div class='page-title'><h2>Projects</h2></div>
 
@@ -10,7 +9,18 @@
 
   <div class='clear'></div>
 
+  <div class="grid-items-lines">
+    <% @projects.each do |project| %>
+      <%= link_to project, :class => "grid-item" do %>
+        <%= render partial: 'grid_items', locals: { project: project } %>
+        <% end %>
+    <% end %>
+    <div class="right-cover"></div>
+    <div class="bottom-cover"></div>
+  </div>
 
+
+  <!-- CARDS
   <div class='cards'>
     <% @projects.each do |project| %>
     <div class='card'>
@@ -31,6 +41,4 @@
       </div>
     </div>
     <% end %>
-  </div>
-
-</div>
+  </div> -->
