@@ -1,14 +1,16 @@
-<h2>Top Technology News Stories</h2>
-
+<div class='page-title'>
+  <h2>Top Tech News</h2>
+</div>
+<div class="clear"></div>
 
 <div class='cards'>
   <% @articles.each do |article| %>
     <div class='card'>
       <div class="card-image">
         <% if article['urlToImage'] %>
-    <img src='<%= article['urlToImage'] %>' alt="Story Image">
+        <img src='<%= article['urlToImage'] %>' alt="Story Image">
         <% else %>
-        <img src="https://unsplash.it/200/300/?random" alt="">
+        <img src="https://placeimg.com/640/480/tech" alt="random tech image">
         <% end %>
       </div>
       <div class='card-header'>
