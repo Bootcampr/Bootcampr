@@ -22,7 +22,9 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe '#show' do
-    before(:each) { get :show, params: { id: Project.first.id } }
+    before(:each) do
+      get :show, params: { id: Project.first.id }
+    end
 
     it 'returns a status of 200' do
       expect(response).to have_http_status 200
@@ -39,6 +41,7 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe 'GET #new' do
     before(:each) do
+      sign_in user
       get :new
     end
 
@@ -65,6 +68,7 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe 'POST #create' do
     let(:valid_attributes) { FactoryGirl.build(:project).attributes }
+
     context 'when valid params are passed' do
 
       it 'creates a new project in the database' do
@@ -89,6 +93,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context 'when invalid params are passed' do
       before(:each) do
+        sign_in user
         post :create, { project: { title: 'this' } }
       end
 
@@ -112,7 +117,12 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe '#edit' do
-    before(:each) { get :edit, params: { id: project.id } }
+    before(:each) do
+      project.owner = user
+      project.save
+      sign_in user
+      get :edit, params: { id: project.id }
+    end
 
     it 'returns a status of 200' do
       expect(response).to have_http_status 200
@@ -129,6 +139,12 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe '#update' do
     let!(:new_attributes) { FactoryGirl.create(:project).attributes }
+
+    before(:each) do
+      project.owner = user
+      project.save
+      sign_in user
+    end
 
     it 'returns a status of 302' do
       patch :update, params: { id: project.id, project: new_attributes }
@@ -165,7 +181,12 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe '#destroy' do
 
-    before(:each) { delete :destroy, params: { id: project.id } }
+    before(:each) do
+      project.owner = user
+      project.save
+      sign_in user
+      delete :destroy, params: { id: project.id }
+    end
 
     it 'returns status of 302' do
       expect(response.status).to eq 302
