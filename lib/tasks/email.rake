@@ -7,4 +7,8 @@ namespace :email do
     end
   end
 
+  task :force_digest => :environment do
+    users = User.all.select { |user| user.subscribed == true }
+    users.each { |user| DigestMailer.digest_email(user).deliver}
+  end
 end
