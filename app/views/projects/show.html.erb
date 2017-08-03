@@ -1,11 +1,10 @@
 <div id="js-parallax-window" class="parallax-window">
   <div class="parallax-static-content">
-    <b><h2><%= @project.title %></h2></b>
   </div>
   <div id="js-parallax-background" class="parallax-background"></div>
   <style media="screen">
     .parallax-background {
-      background: url( <%= @project.image_stored? ? @project.image.url : "http://lorempixel.com/400/200/abstract" %> ) no-repeat;
+      background: url( <%= @project.image_stored? ? @project.image.url : "http://lorempixel.com/1400/500/abstract" %> ) no-repeat;
     }
   </style>
 </div>
