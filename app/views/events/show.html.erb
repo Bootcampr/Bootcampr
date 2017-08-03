@@ -61,8 +61,8 @@
 
       <% if @event.owner == current_user %>
         <p><strong>Add an event:</strong> Already have a project made for this event? Go to your project page & click "Add Event".  Otherwise, click <%= link_to 'HERE', new_event_project_path(@event) %> to add a project to this event.</p>
-        <%= button_to 'Edit Event', edit_event_path, class: 'show-buttons' %>
-        <%= button_to 'Delete Event', event_path, method: :delete, data: {
+        <%= button_to 'Edit Event', edit_event_path(@event), :method => :get, class: 'show-buttons' %>
+        <%= button_to 'Delete Event', @event, method: :delete, data: {
           confirm: "Are you sure you want to delete this event?"
           }, class: 'show-buttons' %>
       <% end %>
