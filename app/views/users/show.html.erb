@@ -44,7 +44,7 @@
 <div class="user-assets user-col">
   <h2 class='user-header'>Activity:</h2>
   <strong>Affiliated Projects:</strong>
-  <% if @user.projects %>
+  <% if @user.projects.any? %>
     <div class="project-modal">
       <div class="modal">
         <label for="modal-1">
@@ -77,7 +77,7 @@
     <p>This user has not added any projects</p>
   <% end %>
   <strong>Affiliated Events:</strong>
-  <% if @user.events %>
+  <% if @user.events.any? %>
   <div class="event-modal">
     <div class="modal">
       <label for="modal-2">
