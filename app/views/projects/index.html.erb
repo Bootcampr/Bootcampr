@@ -1,31 +1,36 @@
-<div class='page-title'><h2>Projects</h2>
+<div class="project-event-index-container">
 
-<% if user_signed_in? %>
-  <div class='new-project-event-button'>
-    Add new project
-    <span><%= link_to image_tag('small-plus-sign.png', width: 50), new_project_path %></span>
-  </div>
-<% end %>
+  <div class='page-title'><h2>Projects</h2>
 
-
-<div class='cards'>
-  <% @projects.each do |project| %>
-  <div class='card'>
-    <div class="card-image">
-      <% if project.image_stored? %>
-        <%= image_tag project.image.thumb('300x300').url %>
-      <% else %>
-        <img src="http://lorempixel.com/400/200/abstract" alt="">
-      <% end %>
+  <% if user_signed_in? %>
+    <div class='new-project-event-button'>
+      <span><%= link_to image_tag('new-project.png'), new_project_path %></span>
     </div>
-    <div class='card-header'>
-      <div class='project-title'><h3><%= link_to project.title, project %><h3></div>
-    </div>
-    <div class='card-copy'>
-      <p>
-        <%= project.summary %>
-      </p>
-    </div>
-  </div>
   <% end %>
+
+  <div class='clear' />
+
+
+  <div class='cards'>
+    <% @projects.each do |project| %>
+    <div class='card'>
+      <div class="card-image">
+        <% if project.image_stored? %>
+          <%= image_tag project.image.thumb('300x300').url %>
+        <% else %>
+          <img src="http://lorempixel.com/400/200/abstract" alt="">
+        <% end %>
+      </div>
+      <div class='card-header'>
+        <div class='project-title'><h3><%= link_to project.title, project %><h3></div>
+      </div>
+      <div class='card-copy'>
+        <p>
+          <%= project.summary %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
 </div>
