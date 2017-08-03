@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
+  before_action :require_permission, :only => [:edit, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -58,6 +59,12 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :summary, :stack, :repository, :tag_list, :image)
+  end
+
+  def require_permission
+    if current_user != Project.find(params[:id]).owner
+      redirect_to root_path
+    end
   end
 
 end
