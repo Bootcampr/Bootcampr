@@ -215,6 +215,7 @@ only screen and (max-width: 760px),
   margin: 0 auto;
   padding: 30px;
   height: 500px;
+  text-align: center;
 }
 
 .user-header {
@@ -480,11 +481,4 @@ $flashes: (
 
 .categories-page-summary {
   padding-left: 25px;
-}
-
-
-// PROFILE PAGE
-
-user-col {
-  text-align: center;
 }
