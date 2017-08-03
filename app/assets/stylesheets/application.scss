@@ -96,6 +96,7 @@ a:visited {
   padding: 30px;
   color: #000;
   opacity: 0.8;
+  text-align: justify;
 }
 
 .sign-up-form-container {
@@ -351,8 +352,4 @@ $flashes: (
 
 .errors {
   text-align: left;
-}
-
-p {
-  text-align: justify;
 }
