@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe EventsController do
-  let(:test_event) { Event.create(title: 'title', date: '2300-07-27', time: '2300-01-01 23:51:12', location: 'sea', summary: 'that', owner_id: 1) }
-  let!(:event) { FactoryGirl.build(:event) }
   let!(:user) { FactoryGirl.create(:user) }
+  let!(:event) { FactoryGirl.build(:event) }
+  let(:test_event) { Event.create(title: 'title', date: '2300-07-27', time: '2300-01-01 23:51:12', location: 'sea', summary: 'that', owner_id: user.id) }
 
   describe 'GET #index' do
     before(:each) do
@@ -25,6 +25,7 @@ describe EventsController do
 
   describe 'GET #new' do
     before(:each) do
+      sign_in user
       get :new
     end
 
@@ -49,9 +50,14 @@ describe EventsController do
   end
 
   describe 'POST #create' do
+    before(:each) do
+      sign_in user
+    end
+
     let(:valid_attributes) {
-      FactoryGirl.create(:event).attributes
+      FactoryGirl.build(:event).attributes
     }
+
     context 'when valid params are passed' do
 
       it 'creates a new event in the database' do
@@ -113,6 +119,8 @@ describe 'GET #show' do
 end
 
 describe 'GET #edit' do
+  before(:each) { sign_in user }
+
   it "responds with status code 200" do
     get :edit, { id: test_event.id }
     expect(response).to have_http_status 200
@@ -130,6 +138,7 @@ describe 'GET #edit' do
 end
 
 describe '#update' do
+  before(:each) { sign_in user }
   let!(:new_attributes) { FactoryGirl.create(:event).attributes }
 
   it 'returns a status of 302' do
@@ -169,8 +178,8 @@ end
 
 describe '#destroy' do
   before(:each) do
-    event = FactoryGirl.create(:event)
-    delete :destroy, params: { id: event.id }
+    sign_in user
+    delete :destroy, params: { id: test_event.id }
   end
 
   it 'should return status 302' do
