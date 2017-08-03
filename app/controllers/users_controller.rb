@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user.assign_attributes(user_params)
     @user.tag_list = user_params[:tag_list]
     @user.save
-    flash[:success] = "Updated profile"
+    flash[:success] = "Your profile was updated."
     redirect_to @user
   end
 
@@ -27,9 +27,9 @@ class UsersController < ApplicationController
     if @user == current_user
       @user.subscribed = !@user.subscribed
       @user.save
-      notice = 'You have successfully subscribed to emails.' if @user.subscribed
-      notice = 'You have successfully unsubscribed to emails.' if !@user.subscribed
-      redirect_to user_path(@user), notice: notice
+      success = 'You have successfully subscribed to emails.' if @user.subscribed
+      success = 'You have successfully unsubscribed to emails.' if !@user.subscribed
+      redirect_to user_path(@user), notice: success
     else
       redirect_to user_path(@user)
     end

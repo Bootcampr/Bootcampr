@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
       if Rails.env == 'production'
         $twitter.update("Contribute to #{@project.title}, a project hosted by Bootcampr: http://bootcampr.herokuapp.com/projects/#{@project.id}")
       end
+      flash[:notice] = "You created a new project."
       redirect_to @project
     else
       render :new, status: 422
@@ -44,6 +45,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
+      flash[:success] = "You updated your project."
       redirect_to project_path(@project)
     else
       render :edit
@@ -52,6 +54,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     Project.find(params[:id]).destroy
+    flash[:success] = "You removed your project."
     redirect_to projects_path
   end
 
