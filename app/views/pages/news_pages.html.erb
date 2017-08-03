@@ -1,11 +1,15 @@
-<h2>News</h2>
+<h2>Top Technology News Stories</h2>
 
 
 <div class='cards'>
   <% @articles.each do |article| %>
     <div class='card'>
       <div class="card-image">
+        <% if article['urlToImage'] %>
     <img src='<%= article['urlToImage'] %>' alt="Story Image">
+        <% else %>
+        <img src="https://unsplash.it/200/300/?random" alt="">
+        <% end %>
       </div>
       <div class='card-header'>
         <a href="<%= article['url'] %>"><%= article['title'] %></a>

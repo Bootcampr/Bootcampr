@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def news
-    request = RestClient.get 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=1c1b02c0aa584baab7868f0785dce659'
+    request = RestClient.get "https://newsapi.org/v1/articles?source=hacker-news&apiKey=#{ENV['NEWS_KEY']}"
     news = JSON.parse(request.body)
     @articles = []
     news['articles'].each do |article|
