@@ -7,10 +7,10 @@
 <div>
   <strong>Project Owner:</strong>
 
-  <% if @project.owner.first_name == nil && current_user %>
-    To add your name here, edit your profile and include your name there.
+  <% if @project.owner.first_name == nil %>
+    <%= link_to 'A user has no name', @project.owner %>
   <% else %>
-  <%= @project.owner.first_name %> <%= @project.owner.last_name %>
+    <%= link_to @project.owner.full_name, @project.owner %>
   <% end %>
 
 </div>

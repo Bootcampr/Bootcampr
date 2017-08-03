@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-
+  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :require_permission, :only => [:edit, :update, :destroy]
 
   def index
     @events = Event.all.order(:date, :time)
@@ -23,6 +24,7 @@ class EventsController < ApplicationController
       if Rails.env == 'production'
         $twitter.update("Check out #{@event.title}, a new Bootcampr event: http://bootcampr.herokuapp.com/events/#{@event.id}")
       end
+      flash[:success] = "You created a new event."
       redirect_to @event
     else
       render :new, status: 422
@@ -40,6 +42,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
+      flash[:success] = "You updated your event."
       redirect_to @event
     else
       render :edit
@@ -48,14 +51,20 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find(params[:id]).destroy
+    flash[:success] = "You removed your event."
     redirect_to events_path
   end
-
 
   private
 
   def event_params
     params.require(:event).permit(:title, :date, :time, :location, :summary, :tag_list, :image)
+  end
+
+  def require_permission
+    if current_user != Event.find(params[:id]).owner
+      redirect_to root_path
+    end
   end
 
 end

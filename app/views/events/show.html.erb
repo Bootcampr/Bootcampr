@@ -7,7 +7,11 @@
   Time: <%= @event.time.strftime('%I:%M %p') %><br>
   Location: <%= @event.location %><br>
   Summary: <%= @event.summary %><br><br>
-  Coordinator: <%= @event.owner.full_name %><br>
+  Coordinator:   <% if @event.owner.first_name == nil %>
+      <%= link_to 'A user has no name', @event.owner %>
+    <% else %>
+      <%= link_to @event.owner.full_name, @event.owner %>
+    <% end %><br>
   <% if @event.owner == current_user %>
     <%= link_to 'Edit Event', edit_event_path %><br>
     <%= link_to 'Delete Event', event_path, method: :delete, data: {

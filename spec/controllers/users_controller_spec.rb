@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   let!(:user) { FactoryGirl.create(:user) }
 
+  before(:each) { sign_in user }
+
   describe '#show' do
     before(:each) { get :show, params: { id: user.id } }
 
