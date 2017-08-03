@@ -11,7 +11,7 @@
 
   <div class="grid-items-lines">
     <% @projects.each do |project| %>
-      <%= link_to project, :class => "grid-item" do %>
+      <%= link_to project, :class => (project.id % [3, 5, 7].sample == 0 ? "grid-item-big" : "grid-item") do %>
         <%= render partial: 'grid_items', locals: { project: project } %>
         <% end %>
     <% end %>
