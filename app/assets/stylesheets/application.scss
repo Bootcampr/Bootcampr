@@ -3,8 +3,9 @@
 @import "base/base";
 @import "nav-bar";
 @import "fp-columns";
-@import "cards";
 @import "modal";
+@import "grids";
+@import "tag_grids";
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -99,6 +100,7 @@ a:visited {
 }
 
 .sign-up-form-container {
+  margin-top: 20px;
   padding: 30px 75px;
 }
 
@@ -232,6 +234,7 @@ td, th {
   margin: 0 auto;
   padding: 30px;
   height: 500px;
+  text-align: center;
 }
 
 .user-header {
@@ -297,6 +300,7 @@ $hero-height: 80vh;
     color: #fff;
     font-size: 1.5em;
     text-shadow: 1px 1px 2px #000;
+    padding-right: 30px;
   }
 }
 
@@ -370,6 +374,38 @@ $flashes: (
   text-align: left;
 }
 
+.new-project-event-button {
+  float: right;
+  margin-right: 20px;
+}
+
+.clear {
+  clear: both;
+}
+
+// .project-event-index-container {
+//   width: 80%;
+// }
+
+.page-title {
+  float: left;
+  padding-left: 20px;
+  font-size: 3em;
+}
+
 .back-button {
   margin: 10px 0;
+}
+
+.tag-page-content {
+  padding-left: 20px;
+}
+
+.categories-page-summary {
+  font-size: 1.4em;
+}
+
+.choose-rand-tag {
+  padding-left: 25px;
+  font-size: 1.2em;
 }

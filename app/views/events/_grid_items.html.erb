@@ -1,0 +1,7 @@
+<% if event.image_stored? %>
+  <%= image_tag event.image.thumb('300x300').url %>
+<% else %>
+  <img src="http://lorempixel.com/400/200/abstract" alt="">
+<% end %>
+<h1> <%= event.title %> </h1>
+<p> <%= event.summary %> </p>
