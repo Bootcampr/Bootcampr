@@ -49,6 +49,12 @@ gem 'bitters'
 
 # Dragonfly
 gem 'dragonfly', '~> 1.1.3'
+gem 'dragonfly-s3_data_store'
+
+# Caching user images
+group :production do
+  gem 'rack-cache', :require => 'rack/cache'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
