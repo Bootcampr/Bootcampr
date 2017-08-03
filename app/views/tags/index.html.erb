@@ -7,10 +7,10 @@
 
 <div class='clear'></div>
 
-<div>
-  
-  <% @tags.each do |tag| %>
+<% @tags.each do |tag| %>
+  <div class='tag'>
     <%= link_to tag.name, tag %>
-  <% end %>
+  </div>
+<% end %>
 
-</div>
+<%= button_to 'Back', url_for(:back), :method => :get, class: 'back-button' %>

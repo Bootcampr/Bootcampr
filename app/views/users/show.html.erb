@@ -55,14 +55,12 @@
 <div class="user-assets user-col">
   <h2 class='user-header'>Activity:</h2>
   <strong>Affiliated Projects:</strong>
-  <% if @user.projects %>
+  <% if @user.projects.any? %>
     <div class="project-modal">
       <div class="modal">
         <label for="modal-1">
           <div class="modal-trigger">
-            <% if @user.projects.length == 0 %>
-              <p>You don't have any projects yet! Git on it!</p>
-            <% elsif @user.projects.length == 1 %>
+            <% if @user.projects.length == 1 %>
               <p><%= @user.projects[0].title %></p>
             <% elsif @user.projects.length == 2 %>
               <p> <%= @user.projects.last.title %> and 1 more project </p>
@@ -90,14 +88,12 @@
     <p>This user has not added any projects</p>
   <% end %>
   <strong>Affiliated Events:</strong>
-  <% if @user.events %>
+  <% if @user.events.any? %>
   <div class="event-modal">
     <div class="modal">
       <label for="modal-2">
         <div class="modal-trigger">
-          <% if @user.events.length == 0 %>
-            <p>You don't have any projects yet! Git on it!</p>
-          <% elsif @user.events.length == 1 %>
+          <% if @user.events.length == 1 %>
             <p><%= @user.events[0].title %></p>
           <% elsif @user.events.length == 2 %>
             <p> <%= @user.events.last.title %> and 1 more project</p>

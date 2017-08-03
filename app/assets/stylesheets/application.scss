@@ -3,11 +3,8 @@
 @import "base/base";
 @import "nav-bar";
 @import "fp-columns";
-@import "cards";
 @import "modal";
 @import "grids";
-@import "stats";
-@import "hover_tiles";
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -375,4 +372,6 @@ $flashes: (
   float: left;
   padding-left: 20px;
   font-size: 3em;
+.back-button {
+  margin: 10px 0;
 }
