@@ -4,7 +4,7 @@
   <% if @event %>
     <%= form_for @project, url: event_projects_path do |f| %>
       Title: <%= f.text_field :title %><br>
-      Summary: <%= f.text_field :summary %><br>
+      Summary: <%= f.text_area :summary %><br>
       Stack: <%= f.text_field :stack %><br>
       Repo: <%= f.text_field :repository %><br>
       Categories: <%= f.text_field :tag_list, value: f.object.tag_list.to_s %><br />
