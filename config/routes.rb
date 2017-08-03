@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get 'users/:id/subscribe', to: 'users#subscriptions', as: :subscribe
   get 'users/:id/unsubscribe', to: 'users#subscriptions', as: :unsubscribe
-
+  get '/news', to: 'pages#news', as: :news
   resources :tags, only: [:index, :show]
 
   root to: 'pages#index'
