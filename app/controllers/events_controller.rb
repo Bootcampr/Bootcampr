@@ -24,6 +24,7 @@ class EventsController < ApplicationController
       if Rails.env == 'production'
         $twitter.update("Check out #{@event.title}, a new Bootcampr event: http://bootcampr.herokuapp.com/events/#{@event.id}")
       end
+      flash[:success] = "You created a new event."
       redirect_to @event
     else
       render :new, status: 422
@@ -41,6 +42,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
+      flash[:success] = "You updated your event."
       redirect_to @event
     else
       render :edit
@@ -49,6 +51,7 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find(params[:id]).destroy
+    flash[:success] = "You removed your event."
     redirect_to events_path
   end
 

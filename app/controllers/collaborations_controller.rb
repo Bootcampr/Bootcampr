@@ -4,7 +4,6 @@ class CollaborationsController < ApplicationController
     @collaborator = current_user
     @project.collaborators << @collaborator
 
-
     respond_to do |format|
       format.html { redirect_to project_path(@project) }
       format.js
