@@ -363,10 +363,12 @@ $flashes: (
   clear: both;
 }
 
-.project-event-index-container {
-  width: 80%;
-}
+// .project-event-index-container {
+//   width: 80%;
+// }
 
 .page-title {
-  
+  float: left;
+  padding-left: 20px;
+  font-size: 3em;
 }

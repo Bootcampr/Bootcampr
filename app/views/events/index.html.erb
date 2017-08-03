@@ -1,8 +1,12 @@
-<h2>Events</h2>
-<br>
+<div class='page-title'><h2>Events</h2></div>
+
 <% if user_signed_in? %>
-<%= link_to 'Add a New Event', new_event_path %>
+  <div class='new-project-event-button'>
+    <span><%= link_to image_tag('new-events.png'), new_event_path %></span>
+  </div>
 <% end %>
+
+<div class='clear'></div>
 
 <div class='cards'>
   <% @events.each do |event| %>
