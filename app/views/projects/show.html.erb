@@ -82,8 +82,8 @@
 
 
       <% if current_user == @project.owner %>
-        <%= button_to 'Edit this project', edit_project_path, class: 'show-buttons' %>
-        <%= button_to 'Scrap this project', project_path(@project), method: :delete, data: { confirm: "Are you sure you'd like to delete this project?" }, class: 'show-buttons' %>
+        <%= button_to 'Edit this project', edit_project_path(@project), :method => :get, class: 'show-buttons' %>
+        <%= button_to 'Scrap this project', @project, method: :delete, data: { confirm: "Are you sure you'd like to delete this project?" }, class: 'show-buttons' %>
       <% end %>
       <%= button_to 'Back', url_for(:back), :method => :get, class: 'show-buttons' %>
 </div>
