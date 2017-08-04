@@ -6,7 +6,7 @@
       Title: <%= f.text_field :title %><br>
       Summary: <%= f.text_area :summary %><br>
       Stack: <%= f.text_field :stack %><br>
-      Repo: <%= f.text_field :repository %><br>
+      Repo: <%= f.text_field :repository, value: 'https://github.com/' %><br>
       Categories: <%= f.text_field :tag_list, value: f.object.tag_list.to_s %><br />
       Image (optional): <%= f.file_field :image %>
       <%= f.submit %><br>
