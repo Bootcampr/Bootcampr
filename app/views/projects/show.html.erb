@@ -31,7 +31,7 @@
 
       <div class='list-project-events'><p>
         <% if !@project.events.empty? %>
-          <p>Related Events </p>
+          <p><strong>Related Events: </strong></p>
           <% @project.events.each do |event| %>
             <div><p>
               <%= link_to event.title, event_path %><br>
