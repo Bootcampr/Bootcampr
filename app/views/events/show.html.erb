@@ -37,15 +37,17 @@
       <% end %>
 
       <div class="list-event-attendees">
-        <p><strong>Attendees:</strong><br>
-        <% @event.attendances.each do |attendance| %>
-          <% if attendance.attendee == current_user %>
+        <% if !@event.attendees.empty? %>
+          <p><strong>Attendees:</strong><br>
+          <% @event.attendances.each do |attendance| %>
+            <% if attendance.attendee == current_user %>
             ><%= attendance.attendee.full_name %><
           <% else %>
             <%= link_to attendance.attendee.full_name, attendance.attendee %>
           <% end %>
           <br />
-        <% end %></p>
+        <% end %>
+      <% end %></p>
       </div>
 
       <div class="attend-event-button">
