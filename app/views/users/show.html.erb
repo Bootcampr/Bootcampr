@@ -37,20 +37,26 @@
     <p>Location: <%= @user.location %></p>
   </div>
   <div class='user-profile-summary user-profile'>
-    <p>Summary: <%= @user.summary %></p>
+    <%  if @user.summary != '' %>
+      <p>Summary: <%= @user.summary %></p>
+    <% end %><br><br />
   </div>
   <div class='user-profile-tags user-profile'>
     <h2>Skills & Interests:</h2>
-    <ul class='tag-list'>
-      <% @user.tag_list.each do |tag| %>
-      <li><%=link_to tag, tag_path(Tag.find_by(name: tag)), class: 'user-tag' %></li>
-      <% end %>
-    </ul>
+    <% if !@user.tag_list.empty? %>
+      <ul class='tag-list'>
+        <% @user.tag_list.each do |tag| %>
+          <li><%=link_to tag, tag_path(Tag.find_by(name: tag)), class: 'user-tag' %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= button_to "You're empty. Add one!", edit_user_path(@user), :method => :get %>
+    <% end %>
   </div>
 </div>
 
 <div class="user-assets user-col">
-  <h2 class='user-header'>Activity:</h2>
+  <h2 class='user-header'>Activity:</h2><br><br>
   <strong>Affiliated Projects:</strong>
   <% if @user.projects.any? %>
     <div class="project-modal">
@@ -65,7 +71,7 @@
               <p><%= @user.projects.last.title %> and <%= @user.projects.length - 1 %> more projects</p>
             <% end %>
           </div>
-        </label>
+        </label><br><br>
         <input class="modal-state" id="modal-1" type="checkbox" />
         <div class="modal-fade-screen">
           <div class="modal-inner">
