@@ -45,6 +45,22 @@ describe PagesController do
 
   end
 
+  describe 'GET #news' do
+    before(:each) do
+      get :news
+    end
+
+    it 'responds with a status code of 200' do
+      expect(response.status).to eq 200
+    end
+
+    it 'renders the index page' do
+      expect(response).to render_template(:news_pages)
+    end
+
+  end
+
+
 
 
 end
