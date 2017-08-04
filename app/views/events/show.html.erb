@@ -51,7 +51,7 @@
       </div>
 
       <div class="attend-event-button">
-        <% if user_signed_in? && !@event.attendees.include?(current_user) && !@event.owner == current_user %>
+        <% if user_signed_in? && !@event.attendees.include?(current_user) && @event.owner != current_user %>
           <% @attendance = Attendance.new %>
           <%= form_for([@event, @attendance], remote: true) do |f| %>
             <%= f.submit 'Attend this event' %>
