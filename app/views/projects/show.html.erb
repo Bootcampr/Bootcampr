@@ -29,13 +29,13 @@
         <strong>Repository:</strong> <a href="<%= @project.repository %>"><%= @project.repository %></a>
       </div>
 
-      <div class='list-project-events'><p>
+      <div class='list-project-events'>
         <% if !@project.events.empty? %>
-          <p><strong>Related Events: </strong></p>
+          <p><strong>Related Events: </strong>
           <% @project.events.each do |event| %>
-            <div><p>
+            <div>
               <%= link_to event.title, event_path %><br>
-            </div></p>
+            </div>
             <% end %>
           <% end %>
       </div></p>
@@ -47,8 +47,8 @@
       <% end %>
 
       <div class="list-project-collaborators"><p>
+        <% if !@project.collaborators.empty? %>
         <strong>Collaborators:</strong></br>
-        <% if @project.collaborators != nil %>
           <% @project.collaborators.each do |collaborator| %>
             <%= link_to collaborator.full_name, collaborator %>
           <br />
@@ -66,8 +66,8 @@
       </div>
 
       <div class='list-project-events'>
-        <p><strong>Related Events:</strong>
         <% if !@project.events.empty? %>
+        <p><strong>Related Events:</strong>
         <% @project.events.each do |event| %>
         <%= link_to event.title, event_path %>
         <% end %></p>
