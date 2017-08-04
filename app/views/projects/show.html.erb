@@ -29,17 +29,6 @@
         <strong>Repository:</strong> <a href="<%= @project.repository %>"><%= @project.repository %></a>
       </div>
 
-      <div class='list-project-events'>
-        <% if !@project.events.empty? %>
-          <p><strong>Related Events: </strong>
-          <% @project.events.each do |event| %>
-            <div>
-              <%= link_to event.title, event_path %><br>
-            </div>
-            <% end %>
-          <% end %>
-      </div></p>
-
       <% if !@project.tag_list.empty? %>
         <div><p>
           <strong>Categories:</strong> <%= safe_join(@project.tag_list.map { |tag| link_to(tag, tag_path(Tag.find_by(name: tag))) }, ", ".html_safe) %>
@@ -67,9 +56,9 @@
 
       <div class='list-project-events'>
         <% if !@project.events.empty? %>
-        <p><strong>Related Events:</strong>
+        <p><strong>Related Events:</strong><br>
         <% @project.events.each do |event| %>
-        <%= link_to event.title, event_path %>
+          <%= link_to event.title, event_path %>
         <% end %></p>
       </div>
       <% end %>
