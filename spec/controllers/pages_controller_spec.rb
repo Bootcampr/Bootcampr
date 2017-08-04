@@ -50,11 +50,11 @@ describe PagesController do
       get :news
     end
 
-    it 'responds with a status code of 200' do
+    xit 'responds with a status code of 200' do
       expect(response.status).to eq 200
     end
 
-    it 'renders the index page' do
+    xit 'renders the index page' do
       expect(response).to render_template(:news_pages)
     end
 
