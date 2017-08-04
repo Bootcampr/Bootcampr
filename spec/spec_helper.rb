@@ -6,7 +6,9 @@ SimpleCov.start do
   add_filter "/mailers/"
   add_filter "/channels/"
   add_filter "/controllers/registrations_controller.rb"
+  add_filter "/controllers/collaborations_controller.rb"
   add_filter "/controllers/callbacks_controller.rb"
+  add_filter "/jobs/"
   add_filter "/models/tag.rb"
   add_filter "/jobs/"
 end
